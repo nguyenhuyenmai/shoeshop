@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Log>
+  <Entry>
+    <Timestamp>2023-08-25T22:50:44.0057013+07:00</Timestamp>
+    <Message>Đã tạo chương trình</Message>
+    <UserUpdate>Đồng Quang Linh</UserUpdate>
+  </Entry>
+  <Entry>
+    <Timestamp>2023-08-25T22:51:04.9368905+07:00</Timestamp>
+    <Message>Đã phê duyệt chương trình</Message>
+    <UserUpdate>Đồng Quang Linh</UserUpdate>
+  </Entry>
+  <Entry>
+    <Timestamp>2023-08-29T09:04:12.1136071+07:00</Timestamp>
+    <Message>Đã cập nhật quản lý chương trình</Message>
+    <UserUpdate>Đồng Quang Linh</UserUpdate>
+  </Entry>
+  <Entry>
+    <Timestamp>2023-08-29T09:04:26.9675385+07:00</Timestamp>
+    <Message>Đã cập nhật quản lý chương trình</Message>
+    <UserUpdate>Đồng Quang Linh</UserUpdate>
+  </Entry>
+</Log>
