@@ -9,95 +9,99 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ShoeShopProject
 build_property.RootNamespace = ShoeShopProject
-build_property.ProjectDir = C:\Users\Admin\Documents\Project\ShoeShopProject\ShoeShopProject\
+build_property.ProjectDir = C:\Users\Admin\Documents\Project\shoeshopproject\ShoeShopProject\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Admin\Documents\Project\ShoeShopProject\ShoeShopProject
+build_property.MSBuildProjectDirectory = C:\Users\Admin\Documents\Project\shoeshopproject\ShoeShopProject
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/Account/AccountProfile.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Account/AccountProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2NvdW50UHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/Account/LoginAdmin.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Account/LoginAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbkFkbWluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/Account/LoginUser.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Account/LoginUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpblVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/AdminManage/AddProduct.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/AddProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcQWRkUHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/AdminManage/AddUser.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/AddUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcQWRkVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/AdminManage/Dashboard.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/AdminManage/ProductManage.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/ProductManage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcUHJvZHVjdE1hbmFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/AdminManage/SaleHistory.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/SaleHistory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcU2FsZUhpc3RvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/AdminManage/UserManage.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/UserManage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcVXNlck1hbmFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/Home/HomePage.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Home/HomePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/Product/ProductDetails.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Product/ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/SaleManage/ListOrders.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/SaleManage/ListOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZU1hbmFnZVxMaXN0T3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/SaleManage/ManageOrders.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/SaleManage/ManageOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZU1hbmFnZVxNYW5hZ2VPcmRlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/SaleManage/SaleDashboard.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/SaleManage/SaleDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZU1hbmFnZVxTYWxlRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/Shared/Error.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/Shared/_Footer.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shared/_Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/Shared/_Header.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shared/_Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/Shared/_Menu.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shared/_Menu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/Shoping/Cart.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shoping/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcGluZ1xDYXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/_ViewImports.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shoping/CartCheckout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcGluZ1xDYXJ0Q2hlY2tvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/ShoeShopProject/ShoeShopProject/Views/_ViewStart.cshtml]
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

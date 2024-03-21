@@ -22095,3 +22095,36 @@ main {
     font-size: 1rem;
     font-weight: bold;
 }
+
+.view-product {
+    position: relative;
+}
+
+.view-product img {
+    object-fit: contain;
+    height: 480px;
+    width: 100%;
+}
+
+.view-product h3 {
+    background: #FE980F;
+    bottom: 0;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 0;
+    padding: 8px 20px;
+    position: absolute;
+    right: 0;
+}
+
+.product-details {
+    overflow: hidden;
+}
+
+.product-details {
+    margin-bottom: 40px;
+    overflow: hidden;
+    margin-top: 10px;
+}

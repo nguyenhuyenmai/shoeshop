@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ShoeShop.Models;
-
-public partial class CartItem
+namespace ShoeShopProject.Models
 {
-    public int CartItemId { get; set; }
+    public partial class CartItem
+    {
+        public int Id { get; set; }
+        public int CartId { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+        public decimal PriceAmount { get; set; }
 
-    public int CartId { get; set; }
-
-    public int ShoeVariantId { get; set; }
-
-    public int Quantity { get; set; }
-
-    public virtual Cart Cart { get; set; } = null!;
-
-    public virtual ShoeVariant ShoeVariant { get; set; } = null!;
+        public virtual Cart Cart { get; set; } = null!;
+        public virtual ProductVariant Product { get; set; } = null!;
+    }
 }

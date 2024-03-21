@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ShoeShop.Models;
-
-public partial class Brand
+namespace ShoeShopProject.Models
 {
-    public int BrandId { get; set; }
+    public partial class Brand
+    {
+        public Brand()
+        {
+            Products = new HashSet<Product>();
+        }
 
-    public string BrandName { get; set; } = null!;
+        public int Id { get; set; }
+        public string Name { get; set; } = null!;
 
-    public virtual ICollection<ShoeLine> ShoeLines { get; set; } = new List<ShoeLine>();
+        public virtual ICollection<Product> Products { get; set; }
+    }
 }

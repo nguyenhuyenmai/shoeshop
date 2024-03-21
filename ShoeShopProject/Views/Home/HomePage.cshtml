@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using ShoeShopProject.Data;
+@using System.Collections;
+@{
+    List<Product> listProducts = ViewBag.ListProducts;
+    List<Color> listColors = ViewBag.ListColors;
+    List<Size> listSizes = ViewBag.ListSizes;
+    List<Brand> listBrands = ViewBag.ListBrands;
+    List<Slider> listSliders = ViewBag.ListSliders;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,18 +32,14 @@
                 <header class="mb-4">
                     <div class="banner">
                         <div class="slider">
-@*                             @foreach (CommonMaster banner in bannerList)
+                            @if (listSliders != null && listSliders.Count > 0)
                             {
-                                <a href="@Url.Action("ViewProgramDetails", "Programs", new {programId = banner.Description})"><img src="@banner.MasterName" alt="@banner.MasterType"></a>
+                                <a href="@Url.Action("HomePage", "Home")"><img src="@listSliders[0].Image" alt=""></a>
+                                @foreach(Slider slider in listSliders)
+                                {
+                                    <a href="@Url.Action("HomePage", "Home")"><img src="@slider.Image" alt=""></a>
+                                }
                             }
-                            @if (bannerList[0] is CommonMaster bannerFirst)
-                            {
-                                <a href="@Url.Action("ViewProgramDetails", "Programs", new {programId = bannerFirst.Description})"><img src="@bannerFirst.MasterName" alt="@bannerFirst.MasterType"></a>
-                            } *@
-
-                            <a href="#"><img src="/assets/img/slider/banner-tet.png" alt=""></a>
-                            <a href="#"><img src="/assets/img/slider/sale-cuoimua.jpg" alt=""></a>
-                            <a href="#"><img src="/assets/img/slider/banner-tet.png" alt=""></a>
                         </div>
                         <button class="prev" onclick="prevSlide()">&#10094;</button>
                         <button class="next" onclick="nextSlide()">&#10095;</button>
@@ -57,84 +62,69 @@
                             <h5>Thương hiệu</h5>
                             <div class="form-check card-scrollable">
                                 <div class="row">
-                                    @for (int i = 0; i < 20; i++)
+                                    @if (listBrands != null && listBrands.Count > 0)
                                     {
-                                    <div class="col-sm-3 mx-2">
-                                        <input class="form-check-input" type="checkbox" value="" id="brand-nike">
-                                        <label class="form-check-label small fw-bold" for="brand-nike">
-                                            Nike
-                                        </label>
-                                    </div>
+                                        foreach (Brand b in listBrands)
+                                        {
+                                            <div class="col-sm-6">
+                                                <input class="form-check-input" type="checkbox" value="" id="brand_@b.Id">
+                                                <label class="form-check-label small fw-bold" for="brand_@b.Id">
+                                                    @b.Name
+                                                </label>
+                                            </div>
+                                        }
                                     }
                                 </div>
                             </div>
-                            <!-- Add more brand options as needed -->
                         </div>
                         <!-- Filter by Size -->
                         <div class="mb-4">
                             <h5>Size</h5>
                             <div class="form-check card-scrollable">
                                 <div class="row">
-                                @for (int i = 0; i < 20; i++)
-                                {
-                                    <div class="col-sm-3 mx-2">
-                                        <input class="form-check-input" type="checkbox" value="size-35" id="size-35">
-                                        <label class="form-check-label small fw-bold" for="size-35">
-                                            35
-                                        </label>
-                                    </div>
-                                }
+                                    @if (listSizes != null && listSizes.Count > 0)
+                                    {
+                                        foreach (Size s in listSizes)
+                                        {
+                                            <div class="col-sm-6">
+                                                <input class="form-check-input" type="checkbox" value="@s.Id" id="size_@s.Id">
+                                                <label class="form-check-label small fw-bold" for="size_@s.Id">
+                                                    @s.SizeVal
+                                                </label>
+                                            </div>
+                                        }
+                                    }
                                 </div>
                             </div>
-                            <!-- Add more size options as needed -->
-                        </div>
-                        <!-- Filter by Color -->
-                        <div class="mb-4">
-                            <h5>Màu sắc</h5>
-                            <div class="form-check card-scrollable">
-                                <div class="row">
-                                @for (int i = 0; i < 20; i++)
-                                {
-                                    <div class="col-sm-3 mx-2">
-                                        <input class="form-check-input" type="checkbox" value="color-red" id="color-red">
-                                        <label class="form-check-label small fw-bold" for="color-red">
-                                            Xanh
-                                        </label>
-                                    </div>
-                                }
-                                </div>
-                            </div>
-                            <!-- Add more color options as needed -->
                         </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="container-xl px-4">
                             <hr class="mt-2" />
                             <!-- Product Show-->
-                            @for (int i = 0; i < 4; i++)
-                            {
                                 <div class="row">
-                                    @for (int j = 0; j < 4; j++)
+                                @if (listProducts != null && listProducts.Count > 0) {
+                                    foreach (Product p in listProducts)
                                     {
                                         <div class="col-lg-3 col-md-6 mb-4">
                                             <div class="card h-100">
-                                                <a href="#">
-                                                    <img class="card-img-top" src="/assets/img/products/adidas/nike-air-force-1-shadow-sail-tan-dv7449-100-600x600.jpg" alt="Sản phẩm">
+                                                <a href="@Url.Action("ProductDetails", "Product", new{productID = p.Id})">
+                                                    <img class="card-img-top" src="@p.Thumbnail" alt="@p.Name" title="@p.Name">
                                                 </a>
-                                                <div class="card-body">
+                                                <div class="card-body text-center">
                                                     <div class="card-title">
-                                                        <a href="#" class="text-decoration-none fw-bold" style="color: #446084">Onitsuka Tiger Mexico 66 Slip On – Midnight</a>
+                                                        <a href="@Url.Action("ProductDetails", "Product", new{productID = p.Id})" class="text-decoration-none fw-bold" style="color: #446084; font-size: .9em;">@p.Name</a>
                                                     </div>
-                                                    <strong class="text-orange">2.500.000 VND</strong>
+                                                    <strong class="text-orange" style="font-size: .9em;">@Constants.ConvertCurrency(p.Price)</strong>
                                                 </div>
-                                                <div class="card-footer d-flex justify-content-between align-items-center">
-                                                    <button type="button" class="btn btn-sm btn-primary"><i class="fas fa-shopping-cart me-2"></i>Thêm vào giỏ hàng</button>
+                                                <div class="card-footer justify-content-between align-items-center text-center">
+                                                    <a class="btn btn-sm btn-outline-primary" href="@Url.Action("ProductDetails", "Product", new{productID = p.Id})"><i class="fas fa-shopping-cart me-2"></i>Thêm vào giỏ hàng</a>
                                                 </div>
                                             </div>
                                         </div>
                                     }
-                                </div>
-                            }
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

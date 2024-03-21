@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ShoeShop.Models;
-
-public partial class Role
+namespace ShoeShopProject.Models
 {
-    public int RoleId { get; set; }
+    public partial class Role
+    {
+        public Role()
+        {
+            Admins = new HashSet<Admin>();
+        }
 
-    public string RoleName { get; set; } = null!;
+        public int Id { get; set; }
+        public string RoleName { get; set; } = null!;
+        public string? Description { get; set; }
 
-    public string Description { get; set; } = null!;
-
-    public virtual ICollection<Permission> Permissions { get; set; } = new List<Permission>();
-
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+        public virtual ICollection<Admin> Admins { get; set; }
+    }
 }

@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ShoeShop.Models;
-
-public partial class Size
+namespace ShoeShopProject.Models
 {
-    public int SizeId { get; set; }
+    public partial class Size
+    {
+        public Size()
+        {
+            ProductVariants = new HashSet<ProductVariant>();
+        }
 
-    public float SizeValue { get; set; }
+        public int Id { get; set; }
+        public int SizeVal { get; set; }
 
-    public virtual ICollection<ShoeVariant> ShoeVariants { get; set; } = new List<ShoeVariant>();
+        public virtual ICollection<ProductVariant> ProductVariants { get; set; }
+    }
 }

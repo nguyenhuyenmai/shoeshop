@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ShoeShop.Models;
-
-public partial class Cart
+namespace ShoeShopProject.Models
 {
-    public int CartId { get; set; }
+    public partial class Cart
+    {
+        public Cart()
+        {
+            CartItems = new HashSet<CartItem>();
+        }
 
-    public int UserId { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public DateTime UpdateDate { get; set; }
 
-    public DateTime CreateDate { get; set; }
-
-    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
-
-    public virtual User User { get; set; } = null!;
+        public virtual User User { get; set; } = null!;
+        public virtual ICollection<CartItem> CartItems { get; set; }
+    }
 }

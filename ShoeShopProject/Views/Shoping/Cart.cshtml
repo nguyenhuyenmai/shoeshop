@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using ShoeShopProject.Models
+@using ShoeShopProject.ViewModels
+@{
+    List<CartDetails> listCartDetails = ViewBag.ListCartDetails;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,52 +28,63 @@
                     <div class="card invoice">
                         
                         <div class="card-body p-4 p-md-5">
-                            <!-- Invoice table-->
-                            <div class="table-responsive">
-                                <table class="table table-borderless mb-0">
-                                    <thead class="border-bottom">
-                                        <tr class="small text-uppercase text-muted">
-                                            <th class="col-5" scope="col">Sản phẩm</th>
-                                            <th class="col-2 text-center" scope="col">Giá</th>
-                                            <th class="col-2 text-center" scope="col">Số lượng</th>
-                                            <th class="col-2 text-center" scope="col">Tạm tính</th>
-                                            <th class="col-1 text-center" scope="col">Xóa</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Cart item-->
-                                        @for(int i = 0; i < 4; i++)
-                                        {
-                                        <tr class="border-bottom">
-                                            <td class="col-5 align-middle">
-                                                <div class="fw-bold d-flex align-items-center">
-                                                    <a class="me-3" href="#"><img class="img-fluid" style="width: 5rem" src="/assets/img/products/adidas/nike-air-force-1-shadow-sail-tan-dv7449-100-600x600.jpg"></img></a>
-                                                    <a class="text-primary text-decoration-none ms-2" href="#">Nike Air Force 1 Low – Playful Pink</a>
-                                                </div>
-                                            </td>
-                                            <td class="col-2 text-center align-middle fw-bold">3.000.000đ</td>
-                                            <td class="col-2 text-center align-middle fw-bold">
-                                                <div class="d-flex justify-content-center">
-                                                    <input class="form-control fw-bold" style="max-width: 90px;" type="number" min="0" />
-                                                </div>
-                                            </td>
-                                            <td class="col-2 text-center align-middle fw-bold">10.000.000đ</td>
-                                            <td class="col-1 text-center align-middle fw-bold">
-                                                <button class="btn btn-datatable btn-icon btn-transparent-dark" data-feather="x"></button>
-                                            </td>
-                                        </tr>
-                                        }
-                                        <!-- Invoice subtotal-->
-                                        <tr>
-                                            <td class="text-end pb-0" colspan="3"><div class="text-uppercase small fw-700 text-muted">Tổng tiền:</div></td>
-                                            <td class="text-center pb-0"><div class="h5 mb-0 fw-700 text-green">13.000.000đ</div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="mb-2 mt-4 text-center align-middle fw-bold">
-                                    <button class="btn btn-black"> TIẾN HÀNH THANH TOÁN </button>
+                            @if (listCartDetails != null && listCartDetails.Count > 0)
+                            {
+                                <!-- Invoice table-->
+                                <div class="table-responsive">
+                                    <table class="table table-borderless mb-0">
+                                        <thead class="border-bottom">
+                                            <tr class="small text-uppercase text-muted">
+                                                <th class="col-5" scope="col">Sản phẩm</th>
+                                                <th class="col-2 text-center" scope="col">Giá</th>
+                                                <th class="col-2 text-center" scope="col">Số lượng</th>
+                                                <th class="col-2 text-center" scope="col">Tạm tính</th>
+                                                <th class="col-1 text-center" scope="col">Xóa</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Cart item-->
+                                            @foreach (CartDetails cart in listCartDetails)
+                                            {
+                                                <tr class="border-bottom">
+                                                    <td class="col-5 align-middle">
+                                                        <div class="fw-bold d-flex align-items-center">
+                                                            <a class="me-3" href="#"><img class="img-fluid" style="width: 5rem" src="@cart.thumbnail"></img></a>
+                                                            <a class="text-primary text-decoration-none ms-2" href="@Url.Action("ProductDetails", "Product", new{productID = cart.productId})">@cart.productName</a>
+                                                        </div>
+                                                        <div class="fw-bold d-flex align-items-center text-end">
+                                                            <span>@(cart.colorName) - @(cart.size)</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="col-2 text-center align-middle fw-bold">@Constants.ConvertCurrency(cart.unitPrice)</td>
+                                                    <td class="col-2 text-center align-middle fw-bold">
+                                                        <div class="d-flex justify-content-center">
+                                                            <input class="form-control fw-bold" style="max-width: 90px;" type="number" min="0" value="@cart.quantity" />
+                                                        </div>
+                                                    </td>
+                                                    <td class="col-2 text-center align-middle fw-bold">@Constants.ConvertCurrency(cart.priceAmout)</td>
+                                                    <td class="col-1 text-center align-middle fw-bold">
+                                                        <button class="btn btn-datatable btn-icon btn-transparent-dark" data-feather="x"></button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            <!-- Invoice subtotal-->
+                                            <tr>
+                                                <td class="text-end pb-0" colspan="3"><div class="text-uppercase small fw-700 text-muted">Tổng tiền:</div></td>
+                                                <td class="text-center pb-0"><div class="h5 mb-0 fw-700 text-green">13.000.000đ</div></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="mb-2 mt-4 text-center align-middle fw-bold">
+                                        <a class="btn btn-black" href="@Url.Action("CartCheckout", "Shoping")"> TIẾN HÀNH THANH TOÁN </a>
+                                    </div>
                                 </div>
-                            </div>
+                            }
+                            else
+                            {
+                                <spam>VUI LÒNG MUA HÀNG</spam>
+                            }
+
                         </div>
                         <div class="card-footer">
                             <div class="row">

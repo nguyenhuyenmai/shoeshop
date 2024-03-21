@@ -1,4 +1,12 @@
 ﻿<!--Header-->
+@using ShoeShopProject.Data
+@using ShoeShopProject.Models
+@{
+    HttpContextAccessor ht = new HttpContextAccessor();
+    EmrSession emrSession = new EmrSession(ht.HttpContext);
+    User user = ViewBag.User;
+    bool checkLogin = ViewBag.CheckLogin;
+}
 <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
     <!-- Sidenav Toggle Button-->
 @*     <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>*@
@@ -29,6 +37,7 @@
     </ul>
     <!-- Navbar User-->
     <ul class="navbar-nav align-items-center ms-auto">
+@if (checkLogin && user != null) {
             <!-- Carts Dropdown-->
             <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
             <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="shopping-cart"></i></a>
@@ -49,29 +58,30 @@
             </li>
             <!-- User Dropdown-->
             <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="/assets/img/account/profile/profile_16_20230823_054041.jpg" /></a>
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="@user.Image" /></a>
                 <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                     <h6 class="dropdown-header d-flex align-items-center">
-                    <img class="dropdown-user-img" src="/assets/img/account/profile/profile_16_20230823_054041.jpg" />
+                    <img class="dropdown-user-img" src="@user.Image" />
                         <div class="dropdown-user-details">
-                            <div class="dropdown-user-details-name">Quang Linh</div>
-                            <div class="dropdown-user-details-email">linhdq@gmail.com</div>
+                            <div class="dropdown-user-details-name">@user.Fullname</div>
+                            <div class="dropdown-user-details-email">@user.Email</div>
                         </div>
                     </h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="@Url.Action("account-profile", "Account")">
+                    <a class="dropdown-item" href="@Url.Action("account-profile", "Account", new {userID = user.Id})">
                         <div class="dropdown-item-icon"><i data-feather="user"></i></div>
                         Tài khoản
                     </a>
-                    <a class="dropdown-item" href="@Url.Action("login-admin", "Account")">
+                    <a class="dropdown-item" href="@Url.Action("logout", "Account")">
                         <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
                         Đăng xuất
                     </a>
                 </div>
             </li>
-
+} else {
             <li class="nav-item dropdown me-3 me-lg-4">
                 <a class="login-container" href="@Url.Action("login", "Account")">Đăng nhập</a>
             </li>
+}
     </ul>
 </nav>
