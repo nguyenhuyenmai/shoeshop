@@ -2,6 +2,7 @@
 @using ShoeShopProject.ViewModels
 @{
     List<CartDetails> listCartDetails = ViewBag.ListCartDetails;
+    Cart cartInfo = ViewBag.CartInfo;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -59,19 +60,21 @@
                                                     <td class="col-2 text-center align-middle fw-bold">@Constants.ConvertCurrency(cart.unitPrice)</td>
                                                     <td class="col-2 text-center align-middle fw-bold">
                                                         <div class="d-flex justify-content-center">
-                                                            <input class="form-control fw-bold" style="max-width: 90px;" type="number" min="0" value="@cart.quantity" />
+                                                            <input class="form-control fw-bold" style="max-width: 90px;" oninput="ChangeQuantityValue('@cart.cartItemId', '@cart.productId', this)" type="number" min="0" value="@cart.quantity" />
                                                         </div>
                                                     </td>
-                                                    <td class="col-2 text-center align-middle fw-bold">@Constants.ConvertCurrency(cart.priceAmout)</td>
+                                                    <td class="col-2 text-center align-middle fw-bold cart_total_price" id="cart_total_price_@cart.productVariantId">@Constants.ConvertCurrency(cart.priceAmout)</td>
                                                     <td class="col-1 text-center align-middle fw-bold">
-                                                        <button class="btn btn-datatable btn-icon btn-transparent-dark" data-feather="x"></button>
+                                                        <button class="btn btn-datatable btn-icon btn-transparent-dark" onclick="DeleteCartItem('@cart.cartItemId')" data-feather="x"></button>
                                                     </td>
                                                 </tr>
                                             }
                                             <!-- Invoice subtotal-->
                                             <tr>
                                                 <td class="text-end pb-0" colspan="3"><div class="text-uppercase small fw-700 text-muted">Tổng tiền:</div></td>
-                                                <td class="text-center pb-0"><div class="h5 mb-0 fw-700 text-green">13.000.000đ</div></td>
+                                                <td class="text-center pb-0">
+                                                    <div class="h5 mb-0 fw-700 text-green" id="cartAmountTotal"></div>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -82,7 +85,12 @@
                             }
                             else
                             {
-                                <spam>VUI LÒNG MUA HÀNG</spam>
+                                <div class="mb-2 mt-4 text-center align-middle fw-bold">
+                                    <span class="text-primary">CHƯA CÓ SẢN PHẨM NÀO TRONG GIỎ HÀNG</span>
+                                </div>
+                                <div class="mb-2 mt-4 text-center align-middle fw-bold">
+                                    <a class="btn btn-outline-danger" href="@Url.Action("HomePage", "Home")"> QUAY LẠI CỬA HÀNG </a>
+                                </div>
                             }
 
                         </div>
@@ -119,5 +127,101 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="/js/scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function isNumeric(value) {
+            // Sử dụng biểu thức chính quy để kiểm tra xem giá trị có phải là số hay không
+            return /^-?\d+$/.test(value);
+        }
+
+        async function DeleteCartItem(cartItemId) {
+            var formData = new FormData();
+            formData.append("cartItemId", cartItemId);
+
+            try {
+                const response = await fetch("/Shoping/DeleteCartItem", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    showAlert('Không thể xóa khỏi giỏ hàng', 'warning');
+                    window.location.reload();
+                }
+            } catch (error) {
+                showAlert('Error' + error, 'error');
+            }
+        }
+
+        async function ChangeQuantityValue(cartItemId, productId, inputElement) {
+            var quantity = inputElement.value;
+            // Kiểm tra giá trị nhập liệu
+            if (!isNumeric(quantity) || parseInt(quantity) < 0) {
+                inputElement.value = 1;
+                return;
+            }
+
+            if (isNumeric(quantity) && quantity == 0) {
+                await DeleteCartItem(cartItemId);
+            }
+
+            var formData = new FormData();
+            formData.append("cartItemId", cartItemId);
+            formData.append("productId", productId);
+            formData.append("quantity", quantity);
+
+            try {
+                const response = await fetch("/Shoping/UpdateCartItemQuantity", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    showAlert('Không thể cập nhật số lượng', 'warning');
+                    window.location.reload();
+                }
+            } catch (error) {
+                showAlert('Error' + error, 'error');
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy danh sách tất cả các phần tử có class 'cart_total_price'
+            const cartTotalPriceElements = document.querySelectorAll('.cart_total_price');
+            var total = 0;
+
+            if (cartTotalPriceElements.length > 0) {
+                cartTotalPriceElements.forEach(element => {
+                    // Lấy nội dung của phần tử
+                    const priceString = element.textContent.trim();
+                    const numberString = priceString.replace(/[₫,.]/g, '');
+                    const priceAmount = parseInt(numberString);
+                    total += priceAmount;
+                });
+
+                // Hiển thị tổng tại cartAmountTotal
+                var cartAmountTotalElement = document.getElementById("cartAmountTotal");
+                cartAmountTotalElement.textContent = convertCurrency(total); // Định dạng tổng với hai chữ số sau dấu thập phân
+            }
+            
+        });
+
+        function convertCurrency(amount) {
+            // Format số với dấu phân cách hàng nghìn và ký hiệu tiền tệ "₫"
+            return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
+        }
+    </script>
 </body>
 </html>

@@ -4,7 +4,7 @@ using ShoeShopProject.ViewModels;
 namespace ShoeShopProject.Services
 {
     /// <summary>
-    /// Serive quản lý sản phẩm - product
+    /// Serive quản lý giỏ hàng - cart
     /// </summary>
     public class CartService
     {
@@ -88,7 +88,7 @@ namespace ShoeShopProject.Services
                               where ci.CartId == cart.Id
                               select new CartDetails
                               {
-                                  cartId = cart.Id,
+                                  cartItemId = ci.Id,
                                   productId = p.Id,
                                   productVariantId = pv.Id,
                                   productName = p.Name,
@@ -107,5 +107,49 @@ namespace ShoeShopProject.Services
             }
             return listCartDetails;
         }
+
+        /// <summary>
+        /// Delete cart item
+        /// </summary>
+        /// <param name="cartItemId"></param>
+        /// <returns></returns>
+        public int DeleteCartItem(int cartItemId)
+        {
+            int status = -1;
+            CartItem cartItem = _context.CartItems.FirstOrDefault(c => c.Id == cartItemId);
+            if (cartItem != null)
+            {
+                _context.CartItems.Remove(cartItem);
+                _context.SaveChanges();
+                status = 0;
+            }
+            return status;
+        }
+
+        /// <summary>
+        /// Change quantity cart items
+        /// </summary>
+        /// <param name="cartItemId"></param>
+        /// <param name="productId"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        public int UpdateCartItemQuantity(int cartItemId, int productId, int quantity)
+        {
+            int status = -1;
+
+            CartItem cartItem = _context.CartItems.FirstOrDefault(c => c.Id == cartItemId);
+            Product product = _context.Products.FirstOrDefault(p => p.Id == productId);
+            if (cartItem != null && product != null)
+            {
+                cartItem.Quantity = quantity;
+                cartItem.PriceAmount = product.Price * quantity;
+                _context.CartItems.Update(cartItem);
+                _context.SaveChanges();
+                status = 0;
+            }
+            return status;
+        }
+
+
     }
 }

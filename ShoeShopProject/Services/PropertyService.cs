@@ -4,7 +4,7 @@ using ShoeShopProject.Models;
 namespace ShoeShopProject.Services
 {
     /// <summary>
-    /// Serive quản lý sản phẩm - product
+    /// Serive quản lý property
     /// </summary>
     public class PropertyService
     {
@@ -89,6 +89,16 @@ namespace ShoeShopProject.Services
                 }
             }
             return list;
+        }
+
+        /// <summary>
+        /// Get all payment
+        /// </summary>
+        /// <returns></returns>
+        public List<Payment> GetAllPaymentMethod()
+        {
+            List<Payment> listPayment = _context.Payments.OrderBy(x => x.Id).ToList();
+            return listPayment;
         }
     }
 }

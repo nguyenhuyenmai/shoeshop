@@ -13,6 +13,8 @@ namespace ShoeShopProject.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         public string OrderAddress { get; set; } = null!;
+        public string OrderPhone { get; set; }
+        public string OrderName { get; set; }
         public int PaymentMethod { get; set; }
         public bool PaymentStatus { get; set; }
         public int OrderStatus { get; set; }

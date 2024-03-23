@@ -16,8 +16,8 @@ builder.Services.AddAuthentication(options =>
 })
     .AddCookie(options =>
     {
-        options.LoginPath = "/account/login";
-        options.AccessDeniedPath = "/account/login";
+        options.LoginPath = "/Account/login";
+        options.AccessDeniedPath = "/Account/login";
     })
     .AddGoogle(options =>
     {

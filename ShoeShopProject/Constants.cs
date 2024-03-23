@@ -7,6 +7,14 @@
     {
         public const string DEFAULT_IMG_USER = "/assets/img/illustrations/profiles/profile-2.png";
 
+        public const int NOT_APPROVE_ORDER = 0;     // chưa xử lý
+        public const int SUCCESS_ORDER = 1;     // đã hoàn thành
+        public const int APPROVE_ORDER = 2;     // đang xử lý
+        public const int CANCEL_ORDER = 3;     // đã hủy
+
+        public const bool NOT_PAYMENT_ORDER = false;     // chưa thanh toán
+        public const bool PAYMENT_ORDER = true;     // đã thanh toán
+
         /// <summary>
         /// Convert currency
         /// </summary>
@@ -14,7 +22,7 @@
         /// <returns></returns>
         public static string ConvertCurrency(decimal amount)
         {
-            return amount.ToString("#,##0đ");
+            return amount.ToString("#,##0₫");
         }
     }
 }

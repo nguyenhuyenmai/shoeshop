@@ -185,6 +185,10 @@ namespace ShoeShopProject.Data
 
                 entity.Property(e => e.OrderAddress).HasColumnName("order_address");
 
+                entity.Property(e => e.OrderPhone).HasColumnName("order_phone");
+
+                entity.Property(e => e.OrderName).HasColumnName("order_name");
+
                 entity.Property(e => e.OrderDesc).HasColumnName("order_desc");
 
                 entity.Property(e => e.OrderStatus).HasColumnName("order_status");
