@@ -87,7 +87,7 @@ namespace ShoeShopProject.Controllers
                 if (userImg != null && userImg.Length > 0)
                 {
                     // Đảm bảo thư mục tồn tại hoặc tạo mới nếu chưa có
-                    imagePath = Path.Combine("wwwroot", "images", "img", "account", "profile");
+                    imagePath = Path.Combine("wwwroot", "assets", "img", "account", "profile");
                     Directory.CreateDirectory(imagePath);
 
                     DateTime SaveDate = DateTime.Now;
@@ -99,7 +99,7 @@ namespace ShoeShopProject.Controllers
                     // Save the image to the directory
                     imagePath = Path.Combine(imagePath, fileName);
 
-                    usrImagePath = $"/images/img/account/profile/{fileName}";
+                    usrImagePath = $"/assets/img/account/profile/{fileName}";
                     user.Image = usrImagePath;
                 }
 
@@ -123,7 +123,7 @@ namespace ShoeShopProject.Controllers
                         }
                         if (!string.IsNullOrEmpty(oldImg))
                         {
-                            var oldImagePath = Path.Combine("wwwroot", "images", "img", "account", "profile", Path.GetFileName(oldImg));
+                            var oldImagePath = Path.Combine("wwwroot", "assets", "img", "account", "profile", Path.GetFileName(oldImg));
                             if (System.IO.File.Exists(oldImagePath))
                             {
                                 System.IO.File.Delete(oldImagePath);

@@ -18,6 +18,11 @@
         public const bool NOT_PAYMENT_ORDER = false;     // chưa thanh toán
         public const bool PAYMENT_ORDER = true;     // đã thanh toán
 
+        public const string PRO_CATEGORY = "category";
+        public const string PRO_BRAND = "brand";
+        public const string PRO_SIZE = "size";
+        public const string PRO_COLOR = "color";
+
         /// <summary>
         /// Convert currency
         /// </summary>

@@ -113,31 +113,34 @@ namespace ShoeShopProject.Controllers
         {
             if (!String.IsNullOrEmpty(userName) && !String.IsNullOrEmpty(password))
             {
-
-                var imagePath = Path.Combine("wwwroot", "images", "img", "account", "profile");
+                var imagePath = Path.Combine("wwwroot", "assets", "img", "account", "profile");
                 Directory.CreateDirectory(imagePath);
 
-                Admin admin = _context.Admins.FirstOrDefault(ad => ad.Username == userName && ad.Password == password);
+                Admin admin = _context.Admins.FirstOrDefault(ad => ad.Username == userName);
                 if (admin == null)
                 {
+                    admin = new Admin();
+
+                    string oldImg = admin.Image;
                     string usrImagePath = String.Empty;
                     if (userImg != null && userImg.Length > 0)
                     {
                         string fileNameWithoutExtension = $"profile_admin_{DateTime.Now:yyyyMMdd_HHmmss}";
                         string fileExtension = Path.GetExtension(userImg.FileName);
                         string fileName = $"{fileNameWithoutExtension}{fileExtension}";
-                        usrImagePath = $"/images/img/account/profile/{fileName}";
+
+                        // Save the image to the directory
+                        imagePath = Path.Combine(imagePath, fileName);
+
+                        usrImagePath = $"/assets/img/account/profile/{fileName}";
+                        admin.Image = usrImagePath;
                     }
 
-                    admin = new Admin()
-                    {
-                        Username = userName,
-                        Password = password,
-                        Fullname = fullName,
-                        Phone = phone,
-                        RoleId =  role,
-                        Image = usrImagePath
-                    };
+                    admin.Username = userName;
+                    admin.Password = password;
+                    admin.Fullname = fullName;
+                    admin.Phone = phone;
+                    admin.RoleId =  role;
 
                     _context.Admins.Add(admin);
                     _context.SaveChanges();
@@ -147,6 +150,14 @@ namespace ShoeShopProject.Controllers
                         using (var stream = new FileStream(imagePath, FileMode.Create))
                         {
                             userImg.CopyTo(stream);
+                        }
+                        if (!string.IsNullOrEmpty(oldImg))
+                        {
+                            var oldImagePath = Path.Combine("wwwroot", "assets", "img", "account", "profile", Path.GetFileName(oldImg));
+                            if (System.IO.File.Exists(oldImagePath))
+                            {
+                                System.IO.File.Delete(oldImagePath);
+                            }
                         }
                     }
 
@@ -168,7 +179,7 @@ namespace ShoeShopProject.Controllers
             if (adminID >= 0)
             {
 
-                var imagePath = Path.Combine("wwwroot", "images", "img", "account", "profile");
+                var imagePath = Path.Combine("wwwroot", "assets", "img", "account", "profile");
                 Directory.CreateDirectory(imagePath);
 
                 Admin admin = _context.Admins.FirstOrDefault(ad => ad.Id == adminID);
@@ -193,7 +204,7 @@ namespace ShoeShopProject.Controllers
                         // Save the image to the directory
                         imagePath = Path.Combine(imagePath, fileName);
 
-                        usrImagePath = $"/images/img/account/profile/{fileName}";
+                        usrImagePath = $"/assets/img/account/profile/{fileName}";
                         admin.Image = usrImagePath;
                     }
 
@@ -214,7 +225,7 @@ namespace ShoeShopProject.Controllers
                         }
                         if (!string.IsNullOrEmpty(oldImg))
                         {
-                            var oldImagePath = Path.Combine("wwwroot", "images", "img", "account", "profile", Path.GetFileName(oldImg));
+                            var oldImagePath = Path.Combine("wwwroot", "assets", "img", "account", "profile", Path.GetFileName(oldImg));
                             if (System.IO.File.Exists(oldImagePath))
                             {
                                 System.IO.File.Delete(oldImagePath);

@@ -82,8 +82,8 @@
                                                 <td colspan="2">@Constants.ConvertCurrency(product.price)</td>
                                                 <td colspan="2">@product.totalStock</td>
                                                 <td colspan="2">
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="user-management-edit-user.html"><i data-feather="edit"></i></a>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i data-feather="trash-2"></i></a>
+                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="@Url.Action("UpdateProductManage", "ProductManage", new{productID = product.Id})"><i data-feather="edit"></i></a>
+                                                    <button class="btn btn-datatable btn-icon btn-transparent-dark" onclick="DeleteProduct('@product.Id')"><i data-feather="trash-2"></i></button>
                                                 </td>
                                             </tr>
                                         }
@@ -101,5 +101,34 @@
     <script src="/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="/js/datatables/datatables-simple-demo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        function DeleteProduct(productID) {
+            var formData = new FormData();
+            formData.append('productID', productID);
+
+            $.ajax({
+                url: "/ProductManage/DeleteProductInfo",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: async function (data) {
+                    if (data.success) {
+                        await showAlert('Xóa sản phẩm thành công', 'success');
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        await showAlert("Không thể xóa sản phẩm. vui lòng thử lại.", 'warning');
+                    }
+                },
+                error: async function (xhr, status, error) {
+                    await showAlert("Error", 'error');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
