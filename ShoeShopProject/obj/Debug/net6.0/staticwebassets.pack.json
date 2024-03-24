@@ -13,34 +13,6 @@
       "PackagePath": "staticwebassets\\assets\\demo\\chart-pie-demo.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\document\\forum\\forum_doc_20230824_121058.doc",
-      "PackagePath": "staticwebassets\\assets\\document\\forum\\forum_doc_20230824_121058.doc"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\document\\partner\\partner_doc_20230823_175454.doc",
-      "PackagePath": "staticwebassets\\assets\\document\\partner\\partner_doc_20230823_175454.doc"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\document\\partner\\partner_doc_20230824_092615.doc",
-      "PackagePath": "staticwebassets\\assets\\document\\partner\\partner_doc_20230824_092615.doc"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\document\\partner\\partner_doc_20230824_093942.doc",
-      "PackagePath": "staticwebassets\\assets\\document\\partner\\partner_doc_20230824_093942.doc"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\document\\partner\\partner_doc_20230825_220146.doc",
-      "PackagePath": "staticwebassets\\assets\\document\\partner\\partner_doc_20230825_220146.doc"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\document\\partnerhistory\\7\\partnerhistory_7_20230825_215944.doc",
-      "PackagePath": "staticwebassets\\assets\\document\\partnerhistory\\7\\partnerhistory_7_20230825_215944.doc"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\document\\partnerhistory\\9\\partnerhistory_9_20230825_061757.doc",
-      "PackagePath": "staticwebassets\\assets\\document\\partnerhistory\\9\\partnerhistory_9_20230825_061757.doc"
-    },
-    {
       "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Black.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-Black.otf"
     },
@@ -117,12 +89,20 @@
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\SIL Open Font License.txt"
     },
     {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\account\\profile\\profile_16_20230823_054041.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\account\\profile\\profile_16_20230823_054041.jpg"
+      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\account\\profile\\profile_4_20240324_021444.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\account\\profile\\profile_4_20240324_021444.jpg"
     },
     {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\account\\profile\\profile_17_20230825_230339.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\account\\profile\\profile_17_20230825_230339.jpg"
+      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\account\\profile\\profile_admin_20240324_175347.png",
+      "PackagePath": "staticwebassets\\assets\\img\\account\\profile\\profile_admin_20240324_175347.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\account\\profile\\profile_admin_20240324_181222.png",
+      "PackagePath": "staticwebassets\\assets\\img\\account\\profile\\profile_admin_20240324_181222.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\account\\profile\\profile_admin_20240324_220645.png",
+      "PackagePath": "staticwebassets\\assets\\img\\account\\profile\\profile_admin_20240324_220645.png"
     },
     {
       "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\backgrounds\\bg-angles.svg",
@@ -175,38 +155,6 @@
     {
       "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\favicon.png",
       "PackagePath": "staticwebassets\\assets\\img\\favicon.png"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\illustrations\\400-error-bad-request.svg",
-      "PackagePath": "staticwebassets\\assets\\img\\illustrations\\400-error-bad-request.svg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\illustrations\\401-error-unauthorized.svg",
-      "PackagePath": "staticwebassets\\assets\\img\\illustrations\\401-error-unauthorized.svg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\illustrations\\403-error-forbidden.svg",
-      "PackagePath": "staticwebassets\\assets\\img\\illustrations\\403-error-forbidden.svg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\illustrations\\404-error-with-a-cute-animal.svg",
-      "PackagePath": "staticwebassets\\assets\\img\\illustrations\\404-error-with-a-cute-animal.svg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\illustrations\\404-error.svg",
-      "PackagePath": "staticwebassets\\assets\\img\\illustrations\\404-error.svg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\illustrations\\500-internal-server-error.svg",
-      "PackagePath": "staticwebassets\\assets\\img\\illustrations\\500-internal-server-error.svg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\illustrations\\503-error-service-unavailable.svg",
-      "PackagePath": "staticwebassets\\assets\\img\\illustrations\\503-error-service-unavailable.svg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\illustrations\\504-error-gateway-timeout.svg",
-      "PackagePath": "staticwebassets\\assets\\img\\illustrations\\504-error-gateway-timeout.svg"
     },
     {
       "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\illustrations\\CREDITS.md",
@@ -277,92 +225,12 @@
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\windows.svg"
     },
     {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\product_1\\109375270_639850966882756_2779380324443124549_n-1-600x748.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\product_1\\109375270_639850966882756_2779380324443124549_n-1-600x748.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\product_1\\109836637_281107486491620_6691488776228593399_n-1-600x749.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\product_1\\109836637_281107486491620_6691488776228593399_n-1-600x749.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\product_1\\converse-run-star-hike-high-white-166799c-1-600x600.jpeg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\product_1\\converse-run-star-hike-high-white-166799c-1-600x600.jpeg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\product_1\\converse-run-star-hike-high-white-166799c-2-600x600.jpeg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\product_1\\converse-run-star-hike-high-white-166799c-2-600x600.jpeg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\product_1\\converse-run-star-hike-high-white-166799c-33-600x600.jpeg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\product_1\\converse-run-star-hike-high-white-166799c-33-600x600.jpeg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\product_5\\air-jordan-1-mid-coconut-milk-particle-grey-dn4281-100-1-600x600.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\product_5\\air-jordan-1-mid-coconut-milk-particle-grey-dn4281-100-1-600x600.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\product_5\\air-jordan-1-zoom-cmft-patent-chicago-ct0979-610-3-600x600.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\product_5\\air-jordan-1-zoom-cmft-patent-chicago-ct0979-610-3-600x600.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\product_5\\air-jordan-1-zoom-cmft-patent-chicago-ct0979-610-4-600x600.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\product_5\\air-jordan-1-zoom-cmft-patent-chicago-ct0979-610-4-600x600.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\product_5\\air-jordan-1-zoom-cmft-patent-chicago-ct0979-610-5-600x600.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\product_5\\air-jordan-1-zoom-cmft-patent-chicago-ct0979-610-5-600x600.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\product_5\\nike-air-force-1-shadow-sail-tan-dv7449-100-600x600.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\product_5\\nike-air-force-1-shadow-sail-tan-dv7449-100-600x600.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\thumbnails\\air-jordan-1-zoom-cmft-patent-chicago-ct0979-610-600x600.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\thumbnails\\air-jordan-1-zoom-cmft-patent-chicago-ct0979-610-600x600.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\products\\thumbnails\\converse-run-star-hike-high-white-166799c-600x600.jpeg",
-      "PackagePath": "staticwebassets\\assets\\img\\products\\thumbnails\\converse-run-star-hike-high-white-166799c-600x600.jpeg"
-    },
-    {
       "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\slider\\banner-tet.png",
       "PackagePath": "staticwebassets\\assets\\img\\slider\\banner-tet.png"
     },
     {
       "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\slider\\sale-cuoimua.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\slider\\sale-cuoimua.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\log\\program\\program_28_20230824_110051",
-      "PackagePath": "staticwebassets\\assets\\log\\program"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\log\\program\\program_29_20230824_110714",
-      "PackagePath": "staticwebassets\\assets\\log\\program"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\log\\program\\program_30_20230824_114616",
-      "PackagePath": "staticwebassets\\assets\\log\\program"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\log\\program\\program_31_20230825_205501",
-      "PackagePath": "staticwebassets\\assets\\log\\program"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\log\\program\\program_32_20230825_211919",
-      "PackagePath": "staticwebassets\\assets\\log\\program"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\log\\program\\program_33_20230825_225044",
-      "PackagePath": "staticwebassets\\assets\\log\\program"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\log\\program\\program_34_20230825_225237",
-      "PackagePath": "staticwebassets\\assets\\log\\program"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\log\\program\\program_35_20230828_083914",
-      "PackagePath": "staticwebassets\\assets\\log\\program"
     },
     {
       "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\css\\login.css",

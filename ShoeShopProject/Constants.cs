@@ -12,6 +12,9 @@
         public const int APPROVE_ORDER = 2;     // đang xử lý
         public const int CANCEL_ORDER = 3;     // đã hủy
 
+        public const int ROLE_ADMIN = 1;
+        public const int ROLE_SALE = 2;
+
         public const bool NOT_PAYMENT_ORDER = false;     // chưa thanh toán
         public const bool PAYMENT_ORDER = true;     // đã thanh toán
 

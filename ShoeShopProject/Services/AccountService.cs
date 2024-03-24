@@ -28,5 +28,17 @@ namespace ShoeShopProject.Services
             return user;
         }
 
+        /// <summary>
+        /// Update user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public int UpdateUser(User user)
+        {
+            _context.Users.Update(user);
+            _context.SaveChanges(true);
+            return user.Id;
+        }
+
     }
 }

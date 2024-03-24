@@ -1,8 +1,4 @@
-﻿/*!
-    * Start Bootstrap - SB Admin Pro v2.0.0 (https://shop.startbootstrap.com/product/sb-admin-pro)
-    * Copyright 2013-2021 Start Bootstrap
-    * Licensed under SEE_LICENSE (https://github.com/StartBootstrap/sb-admin-pro/blob/master/LICENSE)
-    */
+﻿// alert
     const sweetAlertScript = document.createElement('script');
     sweetAlertScript.src = 'https://cdn.jsdelivr.net/npm/sweetalert2@11';
     document.head.appendChild(sweetAlertScript);

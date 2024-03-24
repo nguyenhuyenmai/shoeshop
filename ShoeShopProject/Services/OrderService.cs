@@ -67,14 +67,41 @@ namespace ShoeShopProject.Services
                         _context.SaveChanges();
                     }
                 }
-
-                // Delete cart
-                _context.Carts.Remove(cart);
-
                 orderID = order.Id;
             }
             
             return orderID;
         }
-    }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+		public List<OrderItemDetails> GetListOrderItemDetails(int orderID)
+        {
+			List<OrderItemDetails> details = new List<OrderItemDetails>();
+            var result = (from od in _context.OrderDetails
+                          join o in _context.Orders on od.OrderId equals o.Id
+                          join p in _context.ProductVariants on od.ProductId equals p.Id
+                          where od.OrderId == orderID
+                          select new OrderItemDetails
+                          {
+                              Id = od.OrderId,
+                              productName = p.Product.Name,
+                              colorName = p.Color.Cname,
+                              size = p.Size.SizeVal,
+                              productId = p.ProductId,
+                              quantity = od.Quantity,
+                              priceAmout = od.AmountPrice,
+                          }).ToList();
+
+            if (result != null && result.Count > 0)
+            {
+                details.AddRange(result);
+            }
+
+			return details;
+		}
+	}
 }

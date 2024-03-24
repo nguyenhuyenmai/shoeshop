@@ -6,6 +6,14 @@
     List<Size> listSizes = ViewBag.ListSizes;
     List<Brand> listBrands = ViewBag.ListBrands;
     List<Slider> listSliders = ViewBag.ListSliders;
+
+    var gap = ViewBag.gap;
+    var totalPage = ViewBag.totalPage;
+    var currentPage = ViewBag.page;
+    string searchCodition = ViewBag.SearchCodition;
+    if (searchCodition == null) searchCodition = String.Empty;
+    List<int>? listChooseBrand = ViewBag.ListChooseBrand;
+    List<int>? listChooseSize = ViewBag.ListChooseSize;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +30,35 @@
     <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png" />
     <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+            .pagination li {
+                margin: 0 5px;
+            }
+
+            .pagination a {
+                color: #333;
+                text-decoration: none;
+                padding: 5px 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+
+                .pagination a:hover {
+                    background-color: #f5f5f5;
+                }
+
+            .pagination .active a {
+                background-color: #007bff;
+                color: #fff;
+                border-color: #007bff;
+            }
+    </style>
 </head>
 <body class="nav-fixed sidenav-toggled">
     @Html.Partial("_Header")
@@ -48,10 +85,10 @@
                 <!-- Search Bar -->
                 <div class="row mb-4 d-flex justify-content-center">
                     <div class="col-sm-5 me-2">
-                        <input type="text" class="form-control me-2" id="search-bar" placeholder="Tìm kiếm tên sản phẩm, thương hiệu,...">
+                        <input type="text" class="form-control me-2" id="searchCondition" value="@searchCodition" placeholder="Tìm kiếm tên sản phẩm, thương hiệu,...">
                     </div>
                     <div class="col-sm-1 ms-2">
-                        <button type="button" class="btn btn-primary">Tìm kiếm</button>
+                        <button type="button" class="btn btn-primary" onclick="SearchProduct()">Tìm kiếm</button>
                     </div>
                 </div>
                 <!-- Main page content-->
@@ -67,7 +104,7 @@
                                         foreach (Brand b in listBrands)
                                         {
                                             <div class="col-sm-6">
-                                                <input class="form-check-input" type="checkbox" value="" id="brand_@b.Id">
+                                                <input class="form-check-input" type="checkbox" name="brand" value="@b.Id" checked="@(listChooseBrand != null && listChooseBrand.Contains(b.Id))" id="brand_@b.Id">
                                                 <label class="form-check-label small fw-bold" for="brand_@b.Id">
                                                     @b.Name
                                                 </label>
@@ -87,7 +124,7 @@
                                         foreach (Size s in listSizes)
                                         {
                                             <div class="col-sm-6">
-                                                <input class="form-check-input" type="checkbox" value="@s.Id" id="size_@s.Id">
+                                                <input class="form-check-input" type="checkbox" name="size" value="@s.Id" checked="@(listChooseSize != null && listChooseSize.Contains(s.Id))" id="size_@s.Id">
                                                 <label class="form-check-label small fw-bold" for="size_@s.Id">
                                                     @s.SizeVal
                                                 </label>
@@ -97,12 +134,19 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="mb-4">
+                            <div class="card-scrollable">
+                                <div class="row">
+                                   <a class="btn btn-outline-dark" href="/Home/HomePage">Xóa tìm kiếm</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="container-xl px-4">
                             <hr class="mt-2" />
                             <!-- Product Show-->
-                                <div class="row">
+                            <div class="row">
                                 @if (listProducts != null && listProducts.Count > 0) {
                                     foreach (Product p in listProducts)
                                     {
@@ -124,6 +168,47 @@
                                         </div>
                                     }
                                 }
+                                else
+                                {
+                                    <div class="col-lg-3 col-md-6 mb-4 text-center">
+                                        <strong class="fw-bold text-primary">Không có sản phẩm phù hợp</strong>
+                                    </div>
+                                }
+                            </div>
+                            <div class="row">
+                                <ul class="pagination justify-content-center">
+                                    @if (currentPage <= gap + 1)
+                                    {
+                                        @for (int i = 1; i < currentPage; i++)
+                                        {
+                                            <li><a href="@Url.Action("HomePage", "Home", new {page = i})">@i</a></li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@Url.Action("HomePage", "Home", new {page = 1})"> <i class="fa fa-angle-double-left px-2"></i> </a></li>
+                                        @for (int i = currentPage - gap; i < currentPage; i++)
+                                        {
+                                            <li><a href="@Url.Action("HomePage", "Home", new {page = i})">@i</a></li>
+                                        }
+                                    }
+                                    <li class="active"><a href=""> @currentPage</a></li>
+                                    @if (currentPage >= totalPage - gap)
+                                    {
+                                        @for (int i = currentPage + 1; i <= totalPage; i++)
+                                        {
+                                            <li><a href="@Url.Action("HomePage", "Home", new {page = i})">@i</a></li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @for (int i = currentPage + 1; i <= currentPage + gap; i++)
+                                        {
+                                            <li><a href="@Url.Action("HomePage", "Home", new {page = i})">@i</a></li>
+                                        }
+                                        <li><a href="@Url.Action("HomePage", "Home", new {page = totalPage})"> <i class="fa fa-angle-double-right"></i> </a></li>
+                                    }
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -169,6 +254,40 @@
                 counter--;
                 slider.style.transform = `translateX(${-slideWidth * counter}px)`;
             }
+        }
+
+        function SearchProduct() {debugger
+            // Lấy giá trị của ô nhập liệu searchCondition
+            var searchCondition = document.getElementById("searchCondition").value;
+
+            var selectedBrands = [];
+            var checkboxes = document.querySelectorAll('input[name="brand"]:checked');
+            if (checkboxes.length > 0) {
+                checkboxes.forEach(function (checkbox) {
+                    selectedBrands.push(checkbox.value);
+                });
+            }
+
+            var selectedSizes = [];
+            var checkboxes = document.querySelectorAll('input[name="size"]:checked');
+            if (checkboxes.length > 0) {
+                checkboxes.forEach(function (checkbox) {
+                    selectedSizes.push(checkbox.value);
+                });
+            }
+
+            var srchStr = '?search=' + searchCondition;
+
+            selectedBrands.forEach(function (brand) {
+                srchStr += '&brand=' + encodeURIComponent(brand);
+            });
+
+            selectedSizes.forEach(function (size) {
+                srchStr += '&size=' + encodeURIComponent(size);
+            });
+
+            window.location.href = '/Home/HomePage' + srchStr;
+
         }
     </script>
 </body>

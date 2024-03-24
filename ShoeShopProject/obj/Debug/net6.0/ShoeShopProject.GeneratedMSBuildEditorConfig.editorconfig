@@ -30,32 +30,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpblVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/AddProduct.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcQWRkUHJvZHVjdC5jc2h0bWw=
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Account/UserOrderDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVc2VyT3JkZXJEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/AddUser.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcQWRkVXNlci5jc2h0bWw=
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Account/UserOrderHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVc2VyT3JkZXJIaXN0b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/AddAdminAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcQWRkQWRtaW5BY2NvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/AdminAccountList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcQWRtaW5BY2NvdW50TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/ProductManage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcUHJvZHVjdE1hbmFnZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/SaleHistory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcU2FsZUhpc3RvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/UserManage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcVXNlck1hbmFnZS5jc2h0bWw=
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/AdminManage/UpdateAdminAccountProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VcVXBkYXRlQWRtaW5BY2NvdW50UHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Home/HomePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/ProductManage/AddProductManage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE1hbmFnZVxBZGRQcm9kdWN0TWFuYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/ProductManage/ProductManageList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE1hbmFnZVxQcm9kdWN0TWFuYWdlTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Product/ProductDetails.cshtml]
@@ -86,8 +98,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shared/_Menu.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51LmNzaHRtbA==
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shared/_HeaderAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXJBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shared/_MenuAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51QWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shoping/Cart.cshtml]
@@ -96,6 +112,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shoping/CartCheckout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcGluZ1xDYXJ0Q2hlY2tvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/Shoping/OrderCompletion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcGluZ1xPcmRlckNvbXBsZXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/Documents/Project/shoeshopproject/ShoeShopProject/Views/_ViewImports.cshtml]

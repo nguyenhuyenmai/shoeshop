@@ -1,7 +1,7 @@
 ﻿@using ShoeShopProject.Models;
 @{
     User user = ViewBag.User;
-    string dob = user.Birthday != null ? user.Birthday.Value.ToString("dd-MM-yyyy") : String.Empty;
+    string dob = user.Birthday != null ? user.Birthday.Value.ToString("yyyy-MM-dd") : String.Empty;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@
                                 <div class="col-auto mb-3">
                                     <h1 class="page-header-title">
                                         <div class="page-header-icon"><i data-feather="user"></i></div>
-                                        Cài đặt tài khoản người dùng
+                                        Cài đặt tài khoản
                                     </h1>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                     <!-- Account page navigation-->
                     <nav class="nav nav-borders">
                         <a class="nav-link active ms-0" href="@Url.Action("account-profile", "Account", new{userID = user.Id})">Tài khoản</a>
-                        <a class="nav-link" href="#">Lịch sử mua hàng</a>
+                        <a class="nav-link" href="@Url.Action("UserOrderHistory", "Account", new{userID = user.Id})">Lịch sử mua hàng</a>
                     </nav>
                     <hr class="mt-0 mb-4" />
                     <div class="row">
@@ -51,11 +51,12 @@
                                 <div class="card-header">Ảnh hồ sơ</div>
                                 <div class="card-body text-center">
                                     <!-- Profile picture image-->
-                                    <img class="img-account-profile rounded-circle mb-2" src="@user.Image" alt="" />
+                                    <img class="img-account-profile avar-image-disp rounded-circle mb-2" id="imagePreviewAdd" src="@user.Image" alt="" />
                                     <!-- Profile picture help block-->
                                     <div class="small font-italic text-muted mb-4">Ảnh JPG hoặc PNG</div>
+                                    <input type="file" class="form-control" style="display: none;" id="fileInputImageAdd" accept="image/*">
                                     <!-- Profile picture upload button-->
-                                    <button class="btn btn-primary" type="button">Tải lên ảnh mới</button>
+                                    <button class="btn btn-primary" onclick="UploadAvatar()" type="button">Tải lên ảnh mới</button>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +95,7 @@
                                             <input class="form-control" id="userAddress" type="email" placeholder="Nhập địa chỉ cụ thể" value="@user.Address" />
                                         </div>
                                         <!-- Save changes button-->
-                                        <button class="btn btn-primary" type="button">Lưu thông tin</button>
+                                        <button class="btn btn-primary" onclick="UpdateProfile()" type="button">Lưu thông tin</button>
                                     </form>
                                 </div>
                             </div>
@@ -107,5 +108,98 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="/js/scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const fileInputImgAdd = document.getElementById('fileInputImageAdd');
+        const imagePreviewAdd = document.getElementById('imagePreviewAdd');
+
+        fileInputImgAdd.addEventListener('change', async function () {
+            const file = fileInputImgAdd.files[0];
+            if (file) {
+                if (!await validateFile(file)) {
+                    imagePreviewAdd.src = '@user.Image';
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imagePreviewAdd.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+
+            }
+        });
+
+        const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp'];
+
+        async function validateFile(file) {
+            if (validImageTypes.indexOf(file.type) === -1) {
+                await showAlert("Please just choose (jpeg, png, gif, svg hoặc webp).", "warning");
+                return false;
+            }
+            return true;
+        }
+
+        function UploadAvatar() {
+            const fileInputImageAdd = document.getElementById('fileInputImageAdd');
+            fileInputImageAdd.click();
+        }
+
+        function UpdateProfile() {
+
+            const userName = document.querySelector('input[id="userName"]').value;
+            const userDOB = document.querySelector('input[id="userDOB"]').value;
+            const userPhone = document.querySelector('input[id="userPhone"]').value;
+            const userAddress = document.querySelector('input[id="userAddress"]').value;
+            const fileInputImageAdd = $('#fileInputImageAdd')[0].files[0];
+
+            if (userName.trim() === '') {
+                showAlert('Vui lòng nhập tên của bạn', 'warning');
+                return;
+            }
+
+            if (userPhone.trim() === '') {
+                showAlert('Vui lòng nhập số điện thoại', 'warning');
+                return;
+            }
+
+            if (userAddress.trim() === '') {
+                showAlert('Vui lòng nhập địa chỉ', 'warning');
+                return;
+            }
+
+
+            var formData = new FormData();
+
+            formData.append('userId', '@user.Id');
+            formData.append('userName', userName);
+            formData.append('userDOB', userDOB);
+            formData.append('userPhone', userPhone);
+            formData.append('userAddress', userAddress);
+            if (fileInputImageAdd) {
+                formData.append('userImg', fileInputImageAdd);
+            }
+
+            $.ajax({
+                url: "/Account/UpdateUserProfile",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: async function (data) {
+                    if (data.success) {
+                        await showAlert('Cập nhật thành công', 'success');
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1000);
+                    } else {
+                        await showAlert("Không thể cập nhật. vui lòng thử lại.", 'warning');
+                    }
+                },
+                error: async function (xhr, status, error) {
+                    await showAlert("Error", 'error');
+                }
+            });
+        }
+    </script>
 </body>
 </html>

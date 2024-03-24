@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using ShoeShopProject.Models;
 using ShoeShopProject.Data;
 using ShoeShopProject.Services;
+using System.Security.Principal;
+using ShoeShopProject.ViewModels;
 
 namespace ShoeShopProject.Controllers
 {
@@ -50,7 +52,7 @@ namespace ShoeShopProject.Controllers
         /// </summary>
         /// <returns></returns>
         [Route("account-profile")]
-        //[Authorize]
+        [Authorize]
         public IActionResult AccountProfile(int userID)
         {
             ServiceMapping mapping = new ServiceMapping(_context, HttpContext);
@@ -68,12 +70,140 @@ namespace ShoeShopProject.Controllers
             return View();
         }
 
-        /// <summary>
-        /// Đăng nhập bằng google
-        /// </summary>
-        /// <param name="ReturnUrl"></param>
-        /// <returns></returns>
-        [Route("google-login")]
+        [Route("UpdateUserProfile")]
+        [Authorize]
+        public IActionResult UpdateUserProfile(int userID, string userName, string userDOB, string userPhone, string userAddress, IFormFile userImg)
+        {
+            EmrSession emrSession = new EmrSession(HttpContext);
+            int userLoginID = emrSession.userId;
+            User user = _context.Users.FirstOrDefault(u => u.Id == userID);
+
+            if (user != null && userLoginID == userID)
+            {
+                
+                string usrImagePath = "";
+                var imagePath = "";
+                string oldImg = user.Image;
+                if (userImg != null && userImg.Length > 0)
+                {
+                    // Đảm bảo thư mục tồn tại hoặc tạo mới nếu chưa có
+                    imagePath = Path.Combine("wwwroot", "images", "img", "account", "profile");
+                    Directory.CreateDirectory(imagePath);
+
+                    DateTime SaveDate = DateTime.Now;
+
+                    string fileNameWithoutExtension = $"profile_{user.Id}_{SaveDate:yyyyMMdd_HHmmss}";
+                    string fileExtension = Path.GetExtension(userImg.FileName);
+                    string fileName = $"{fileNameWithoutExtension}{fileExtension}";
+
+                    // Save the image to the directory
+                    imagePath = Path.Combine(imagePath, fileName);
+
+                    usrImagePath = $"/images/img/account/profile/{fileName}";
+                    user.Image = usrImagePath;
+                }
+
+                user.Fullname = userName;
+                user.Phone = userPhone;
+                user.Address = userAddress;
+                if (!String.IsNullOrEmpty(userDOB))
+                {
+                    user.Birthday = DateTime.Parse(userDOB);
+                }
+                AccountService accountService = new AccountService(_context);
+                int status = accountService.UpdateUser(user);
+
+                if (status >= 0)
+                {
+                    if (userImg != null && !string.IsNullOrEmpty(imagePath))
+                    {
+                        using (var stream = new FileStream(imagePath, FileMode.Create))
+                        {
+                            userImg.CopyTo(stream);
+                        }
+                        if (!string.IsNullOrEmpty(oldImg))
+                        {
+                            var oldImagePath = Path.Combine("wwwroot", "images", "img", "account", "profile", Path.GetFileName(oldImg));
+                            if (System.IO.File.Exists(oldImagePath))
+                            {
+                                System.IO.File.Delete(oldImagePath);
+                            }
+                        }
+                    }
+                }
+
+                emrSession.userId = user.Id;
+                emrSession.userEmail = user.Email;
+                emrSession.userName = user.Fullname;
+                emrSession.userImage = user.Image != null ? user.Image : Constants.DEFAULT_IMG_USER;
+                emrSession.putSession(HttpContext);
+
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false });
+        }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userID"></param>
+		/// <returns></returns>
+		[Route("UserOrderHistory")]
+		[Authorize]
+		public IActionResult UserOrderHistory(int userID)
+        {
+            ServiceMapping mapping = new ServiceMapping(_context, HttpContext);
+            mapping.MappingHeader(this);
+            if (userID >= 0)
+            {
+                User user = _context.Users.FirstOrDefault(x => x.Id == userID);
+                
+                if (user != null)
+                {
+                    List<Order> listOrders = _context.Orders.Where(o => o.UserId == user.Id).ToList();
+
+                    ViewBag.ListOrders = listOrders;
+                    ViewBag.User = user;
+                }
+            }
+            return View();
+        }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="orderID"></param>
+		/// <returns></returns>
+		[Route("UserOrderDetails")]
+        [Authorize]
+		public IActionResult UserOrderDetails(int orderID)
+		{
+			ServiceMapping mapping = new ServiceMapping(_context, HttpContext);
+			mapping.MappingHeader(this);
+
+			Order order = _context.Orders.FirstOrDefault(o => o.Id == orderID);
+			if (order != null)
+			{
+				User user = _context.Users.FirstOrDefault(user => user.Id == order.UserId);
+				OrderService orderService = new OrderService(_context);
+				List<OrderItemDetails> orderItemDetails = orderService.GetListOrderItemDetails(orderID);
+
+				ViewBag.Order = order;
+				ViewBag.User = user;
+				ViewBag.ListOrderItem = orderItemDetails;
+				ViewBag.PaymentMethod = _context.Payments.FirstOrDefault(p => p.Id == order.PaymentMethod);
+			}
+
+			return View();
+		}
+
+		/// <summary>
+		/// Đăng nhập bằng google
+		/// </summary>
+		/// <param name="ReturnUrl"></param>
+		/// <returns></returns>
+		[Route("google-login")]
         [AllowAnonymous]
         public IActionResult GoogleLogin(string ReturnUrl)
         {
@@ -144,6 +274,16 @@ namespace ShoeShopProject.Controllers
                             user = accountService.AddUser(newUser);
                         }
 
+                        Cart cartInfo = _context.Carts.FirstOrDefault(c => c.UserId == user.Id);
+                        if (cartInfo == null)
+                        {
+                            cartInfo = new Cart();
+                            cartInfo.UserId = user.Id;
+                            cartInfo.UpdateDate= DateTime.Now;
+                            _context.Carts.Add(cartInfo);
+                            _context.SaveChanges();
+                        }
+
                         EmrSession emrSession = new EmrSession(HttpContext);
                         emrSession.userId = user.Id;
                         emrSession.userIdIdentity = idIdentity;
@@ -169,6 +309,36 @@ namespace ShoeShopProject.Controllers
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        [Route("LoginAdminCallBack")]
+        public IActionResult LoginAdminCallBack(string username, string password)
+        {
+            if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(password))
+            {
+                Admin admin = _context.Admins.FirstOrDefault(ad => ad.Username == username && ad.Password == password);
+                if (admin != null)
+                {
+                    AdminSession adminSession = new AdminSession(HttpContext);
+                    adminSession.adminID = admin.Id;
+                    adminSession.userName = admin.Username;
+                    adminSession.password = admin.Password;
+                    adminSession.fullName = admin.Fullname;
+                    adminSession.userImage = admin.Image;
+                    adminSession.role = admin.RoleId;
+                    adminSession.putSession(HttpContext);
+
+                    return Json(new { success = true });
+                }
+            }
+
+            return Json(new { success = false });
+        }
+
+        /// <summary>
         /// Logout
         /// </summary>
         /// <returns></returns>
@@ -179,6 +349,8 @@ namespace ShoeShopProject.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             EmrSession emrSession = new EmrSession(HttpContext);
             emrSession.clearSession(HttpContext);
+            AdminSession adminSession = new AdminSession(HttpContext);
+            adminSession.clearSession(HttpContext);
             return RedirectToAction("HomePage", "Home");
         }
     }

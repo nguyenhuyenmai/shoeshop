@@ -32,10 +32,6 @@ namespace ShoeShopProject.Controllers
             int userID = emrSession.userId;
             if (userID >= 0)
             {
-                CartService cartService = new CartService(_context);
-                List<CartDetails> listCartDetails = cartService.GetUserCartDetails(userID);
-
-                ViewBag.ListCartDetails = listCartDetails;
                 Cart cartInfo = _context.Carts.FirstOrDefault(c => c.UserId == userID);
                 if (cartInfo == null)
                 {
@@ -46,6 +42,11 @@ namespace ShoeShopProject.Controllers
                     _context.SaveChanges();
                 }
                 ViewBag.CartInfo = cartInfo;
+
+                CartService cartService = new CartService(_context);
+                List<CartDetails> listCartDetails = cartService.GetUserCartDetails(userID);
+
+                ViewBag.ListCartDetails = listCartDetails;
             }
             return View();
         }
@@ -77,15 +78,32 @@ namespace ShoeShopProject.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Order completion
+        /// </summary>
+        /// <param name="orderID"></param>
+        /// <returns></returns>
         [Route("OrderCompletion")]
         [Authorize]
-        public IActionResult OrderCompletion()
+        public IActionResult OrderCompletion(int orderID)
         {
             ServiceMapping mapping = new ServiceMapping(_context, HttpContext);
             mapping.MappingHeader(this);
 
+            Order order = _context.Orders.FirstOrDefault(o => o.Id == orderID);
+            if (order != null)
+            {
+				User user = _context.Users.FirstOrDefault(user => user.Id == order.UserId);
+                OrderService orderService = new OrderService(_context);
+                List<OrderItemDetails> orderItemDetails = orderService.GetListOrderItemDetails(orderID);
 
-            return View();
+				ViewBag.Order = order;
+				ViewBag.User = user;
+                ViewBag.ListOrderItem = orderItemDetails;
+                ViewBag.PaymentMethod = _context.Payments.FirstOrDefault(p => p.Id == order.PaymentMethod);
+			}
+            
+			return View();
         }
 
         /// <summary>
