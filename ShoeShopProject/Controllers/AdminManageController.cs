@@ -18,6 +18,10 @@ namespace ShoeShopProject.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [Route("Dashboard")]
         public IActionResult Dashboard()
         {
@@ -27,6 +31,11 @@ namespace ShoeShopProject.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("MeDashboard")]
         public IActionResult MeDashboard()
         {
             ServiceMapping serviceMapping = new ServiceMapping(_context, HttpContext);
@@ -60,6 +69,21 @@ namespace ShoeShopProject.Controllers
         {
             ServiceMapping serviceMapping = new ServiceMapping(_context, HttpContext);
             serviceMapping.MappingHeaderAdmin(this);
+
+            return View();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("AccountAdminProfile")]
+        public IActionResult AccountAdminProfile(int adminID)
+        {
+            ServiceMapping serviceMapping = new ServiceMapping(_context, HttpContext);
+            serviceMapping.MappingHeaderAdmin(this);
+
+            ViewBag.Admin = _context.Admins.FirstOrDefault(ad => ad.Id == adminID);
             
             return View();
         }

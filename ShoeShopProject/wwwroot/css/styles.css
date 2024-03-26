@@ -19196,7 +19196,7 @@ body {
 }
 
 .card-scrollable .card-body {
-    max-height: 15rem;
+    max-height: 45rem;
     overflow-y: auto;
 }
 

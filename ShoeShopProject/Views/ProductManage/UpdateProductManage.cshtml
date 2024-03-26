@@ -1,8 +1,12 @@
 ﻿@using ShoeShopProject.Models;
+@using ShoeShopProject.ViewModels;
 @{
     Product product = ViewBag.Product;
     List<Category> listCategories = ViewBag.ListCategories;
     List<Brand> listBrand = ViewBag.ListBrand;
+    List<Size> listSize = ViewBag.ListSize;
+    List<Color> listColor = ViewBag.ListColor;
+    List<ProductDetails> productList = ViewBag.ProductVariantList;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +16,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Add User - SB Admin Pro</title>
+        <title>Users List - SB Admin Pro</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="/css/styles.css" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -124,18 +129,137 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row mb-3 mt-3">
+                        <div class="card">
+                            <div class="row card-header bg-transparent align-items-center justify-content-between ">
+                                <div class="col-auto">
+                                    Danh sách sản phẩm thành phần
+                                </div>
+                                <div class="col-12 col-xl-auto">
+                                    <!-- Button trigger modal-->
+                                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" onclick="ClearVariant()" data-bs-target="#exampleModalCenter"><i class="me-1" data-feather="plus"></i>Thêm mới sản phẩm thành phần</button>
+                                    <!-- Modal-->
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Thêm mới thành phần</h5>
+                                                    <button class="btn-close" type="button" data-bs-dismiss="modal" onclick="ClearVariant()" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row p-3">
+
+                                                        <label class="small fw-bold" for="selectSize">Kích thước</label>
+                                                        <select class="form-control mb-3" id="selectSize">
+                                                            <option selected disabled>Chọn kích thước</option>
+                                                            @if (listSize != null && listSize.Count > 0)
+                                                            {
+                                                                foreach (Size size in listSize)
+                                                                {
+                                                                    <option value="@size.Id">@size.SizeVal</option>
+                                                                }
+                                                            }
+                                                        </select>
+
+                                                        <label class="small fw-bold" for="selectColor">Màu sắc</label>
+                                                        <select class="form-control mb-3" id="selectColor">
+                                                            <option selected disabled>Chọn màu sắc</option>
+                                                            @if (listColor != null && listColor.Count > 0)
+                                                            {
+                                                                foreach(Color color in listColor)
+                                                                {
+                                                                    <option value="@color.Id">@color.Cname</option>
+                                                                }
+                                                            }
+                                                        </select>
+
+                                                        <label class="small fw-bold" for="selectQuantity">Số lượng</label>
+                                                        <input class="form-control mb-2" type="number" id="selectQuantity" value="1" />
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-primary" type="button" onclick="AddProductVariant()">Thêm mới</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                           
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Kích thước</th>
+                                            <th colspan="2">Màu sắc</th>
+                                            <th colspan="2">Số lượng</th>
+                                            <th colspan="2">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (productList != null && productList.Count > 0)
+                                        {
+                                            foreach (ProductDetails pv in productList)
+                                            {
+                                                <tr>
+                                                    <td colspan="2">@pv.size</td>
+                                                    <td colspan="2">@pv.colorName</td>
+                                                    <td colspan="2">@pv.quantity</td>
+                                                    <td colspan="2">
+                                                        <button class="btn btn-datatable btn-icon btn-transparent-dark me-2" data-bs-toggle="modal" data-bs-target="#updateModal_@pv.pId"><i data-feather="edit"></i></button>
+
+                                                        <!-- Modal-->
+                                                        <div class="modal fade" id="updateModal_@pv.pId" tabindex="-1" role="dialog" aria-labelledby="updateModalTitle_@pv.pId" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="updateModalTitle_@pv.pId">Cập nhật sản phẩm thành phần</h5>
+                                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="row p-3">
+
+                                                                            <label class="small fw-bold" for="updateSize_@pv.pId">Kích thước</label>
+                                                                            <input class="form-control mb-2" type="text" id="updateSize_@pv.pId" readonly value="@pv.size" />
+
+                                                                            <label class="small fw-bold" for="updateColor">Màu sắc</label>
+                                                                            <input class="form-control mb-2" type="text" id="updateColor_@pv.pId" readonly value="@pv.colorName" />
+
+                                                                            <label class="small fw-bold" for="updateQuantity">Số lượng</label>
+                                                                            <input class="form-control mb-2" type="number" id="updateQuantity_@pv.pId" value="@pv.quantity" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button class="btn btn-primary" type="button" onclick="UpdateProductVariant('@pv.pId')">Cập nhật</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </main>
                 @Html.Partial("_Footer")
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="/js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="/js/datatables/datatables-simple-demo.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
 
             const fileInputImgAdd = document.getElementById('fileInputImageAdd');
             const imagePreviewAdd = document.getElementById('imagePreviewAdd');
+            const positiveRegex = /^[1-9]\d*$/;
 
             fileInputImgAdd.addEventListener('change', async function () {
                 const file = fileInputImgAdd.files[0];
@@ -190,12 +314,7 @@
                     showAlert("Vui lòng điền tên sản phẩm", "warning");
                     return;
                 }
-                if (!productPrice || productPrice.trim == '') {
-                    showAlert("Vui lòng điền giá tiền cho sản phẩm", "warning");
-                    return;
-                }
-
-                if (!isNaN(productPrice) && productPrice < 1000) {
+                if (!productPrice || !positiveRegex.test(productPrice) && productPrice < 1000) {
                     showAlert("Vui lòng điền giá tiền > 1000", "warning");
                     return;
                 }
@@ -234,6 +353,94 @@
                 });
 
             }
+
+        function ClearVariant() {
+            document.getElementById("selectSize").selectedIndex = 0;
+            document.getElementById("selectColor").selectedIndex = 0;
+            document.getElementById("selectQuantity").value = "1";
+        }
+
+        function AddProductVariant() {
+            const size = document.getElementById("selectSize").value;
+            const color = document.getElementById("selectColor").value;
+            const quantity = document.getElementById("selectQuantity").value;
+
+            if (!size || size == '') {
+                showAlert("Vui lòng chọn kích thước", "warning");
+                return;
+            }
+
+            if (!color || color == '') {
+                showAlert("Vui lòng chọn màu sắc", "warning");
+                return;
+            }
+
+            if (!quantity || !positiveRegex.test(quantity)) {
+                showAlert("Vui lòng chọn số lượng lớn hơn 0", "warning");
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append('productID', '@product.Id');
+            formData.append('size', size);
+            formData.append('color', color);
+            formData.append('quantity', quantity);
+
+            $.ajax({
+                url: "/ProductManage/AddProductVariant",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: async function (data) {
+                    if (data.success) {
+                        await showAlert('Thêm mới sản phẩm thành phần thành công', 'success');
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        await showAlert("Không thể thểm mới sản phẩm thành phần. vui lòng thử lại.", 'warning');
+                    }
+                },
+                error: async function (xhr, status, error) {
+                    await showAlert("Error", 'error');
+                }
+            });
+        }
+
+        function UpdateProductVariant(variantID) {
+            const quantity = document.getElementById("updateQuantity_" + variantID).value;
+
+            if (!quantity || !positiveRegex.test(quantity)) {
+                showAlert("Vui lòng chọn số lượng lớn hơn 0", "warning");
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append('variantID', variantID);
+            formData.append('quantity', quantity);
+
+            $.ajax({
+                url: "/ProductManage/UpdateProductVariant",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: async function (data) {
+                    if (data.success) {
+                        await showAlert('Cập nhật sản phẩm thành phần thành công', 'success');
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        await showAlert("Không thể cập nhật sản phẩm thành phần. vui lòng thử lại.", 'warning');
+                    }
+                },
+                error: async function (xhr, status, error) {
+                    await showAlert("Error", 'error');
+                }
+            });
+        }
         </script>
     </body>
 </html>

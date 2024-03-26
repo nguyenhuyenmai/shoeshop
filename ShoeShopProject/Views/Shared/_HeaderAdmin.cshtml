@@ -18,7 +18,7 @@
 @if (checkLogin && admin != null) {
             <!-- Carts Dropdown-->
             <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="user-check"></i>@role.RoleName</a>
+                <a class="btn btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="me-2" data-feather="user-check"></i>@role.RoleName</a>
             </li>
             <!-- User Dropdown-->
             <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
@@ -32,7 +32,7 @@
                         </div>
                     </h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="@Url.Action("account-profile-admin", "Account", new {adminID = admin.Id})">
+                    <a class="dropdown-item" href="@Url.Action("AccountAdminProfile", "AdminManage", new {adminID = admin.Id})">
                         <div class="dropdown-item-icon"><i data-feather="user"></i></div>
                         Tài khoản
                     </a>

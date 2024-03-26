@@ -109,6 +109,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\account\\profile\\profile_admin_20240324_233946.jpg"
     },
     {
+      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\account\\profile\\profile_admin_20240325_015713.png",
+      "PackagePath": "staticwebassets\\assets\\img\\account\\profile\\profile_admin_20240325_015713.png"
+    },
+    {
       "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\backgrounds\\bg-angles.svg",
       "PackagePath": "staticwebassets\\assets\\img\\backgrounds\\bg-angles.svg"
     },
@@ -283,6 +287,18 @@
     {
       "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\slider\\sale-cuoimua.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\slider\\sale-cuoimua.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\slider\\slider_20240326_200655.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\slider_20240326_200655.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\slider\\slider_20240326_201303.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\slider_20240326_201303.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\assets\\img\\slider\\slider_20240326_201335.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\slider_20240326_201335.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\css\\login.css",

@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\project\\shoeshopproject\\shoeshopproject\\views\\product\\productdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\views\\product\\productdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\project\\shoeshopproject\\shoeshopproject\\views\\productmanage\\slidermanagelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\views\\productmanage\\slidermanagelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\project\\shoeshopproject\\shoeshopproject\\controllers\\productmanagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\controllers\\productmanagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,12 +19,20 @@
       "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\views\\productmanage\\propertymanagelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\project\\shoeshopproject\\shoeshopproject\\views\\productmanage\\productmanagelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\views\\productmanage\\productmanagelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\project\\shoeshopproject\\shoeshopproject\\controllers\\adminmanagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\controllers\\adminmanagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\project\\shoeshopproject\\shoeshopproject\\views\\productmanage\\updateproductmanage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\views\\productmanage\\updateproductmanage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\project\\shoeshopproject\\shoeshopproject\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\project\\shoeshopproject\\shoeshopproject\\views\\account\\accountprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\views\\account\\accountprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\project\\shoeshopproject\\shoeshopproject\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,54 +82,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UpdateProductManage.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\ProductManage\\UpdateProductManage.cshtml",
-              "RelativeDocumentMoniker": "ShoeShopProject\\Views\\ProductManage\\UpdateProductManage.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\ProductManage\\UpdateProductManage.cshtml",
-              "RelativeToolTip": "ShoeShopProject\\Views\\ProductManage\\UpdateProductManage.cshtml",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAAACkAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-24T18:05:27.16Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductManageList.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\ProductManage\\ProductManageList.cshtml",
-              "RelativeDocumentMoniker": "ShoeShopProject\\Views\\ProductManage\\ProductManageList.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\ProductManage\\ProductManageList.cshtml",
-              "RelativeToolTip": "ShoeShopProject\\Views\\ProductManage\\ProductManageList.cshtml",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAAG8AAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-24T17:53:58.772Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductManageController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Controllers\\ProductManageController.cs",
-              "RelativeDocumentMoniker": "ShoeShopProject\\Controllers\\ProductManageController.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Controllers\\ProductManageController.cs",
-              "RelativeToolTip": "ShoeShopProject\\Controllers\\ProductManageController.cs",
-              "ViewState": "AQIAADwBAAAAAAAAAAAAAFYBAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T16:53:11.637Z",
+              "Title": "ProductDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\Product\\ProductDetails.cshtml",
+              "RelativeDocumentMoniker": "ShoeShopProject\\Views\\Product\\ProductDetails.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\Product\\ProductDetails.cshtml",
+              "RelativeToolTip": "ShoeShopProject\\Views\\Product\\ProductDetails.cshtml",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAFgAAABRAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T13:27:21.471Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "AdminManageController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Controllers\\AdminManageController.cs",
+              "RelativeDocumentMoniker": "ShoeShopProject\\Controllers\\AdminManageController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Controllers\\AdminManageController.cs",
+              "RelativeToolTip": "ShoeShopProject\\Controllers\\AdminManageController.cs",
+              "ViewState": "AQIAAIsAAAAAAAAAAAAQwLkAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T12:56:17.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "ShoeShopProject\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "ShoeShopProject\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAAOAAAAAAAAAAAAAAAGcAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T12:55:51.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AccountProfile.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\Account\\AccountProfile.cshtml",
+              "RelativeDocumentMoniker": "ShoeShopProject\\Views\\Account\\AccountProfile.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\Account\\AccountProfile.cshtml",
+              "RelativeToolTip": "ShoeShopProject\\Views\\Account\\AccountProfile.cshtml",
+              "ViewState": "AQIAAKIAAAAAAAAAAAAAAMgAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T12:26:36.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "styles.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\css\\styles.css",
+              "RelativeDocumentMoniker": "ShoeShopProject\\wwwroot\\css\\styles.css",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\wwwroot\\css\\styles.css",
+              "RelativeToolTip": "ShoeShopProject\\wwwroot\\css\\styles.css",
+              "ViewState": "AQIAAOZKAAAAAAAAAAAhwPVKAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-03-26T12:01:45.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "PropertyManageList.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\ProductManage\\PropertyManageList.cshtml",
               "RelativeDocumentMoniker": "ShoeShopProject\\Views\\ProductManage\\PropertyManageList.cshtml",
               "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\ProductManage\\PropertyManageList.cshtml",
               "RelativeToolTip": "ShoeShopProject\\Views\\ProductManage\\PropertyManageList.cshtml",
-              "ViewState": "AQIAAPIAAAAAAAAAAAAAAA0BAAAjAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAAAC4AAAC2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-24T16:53:03.233Z",
+              "WhenOpened": "2024-03-26T11:49:30.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SliderManageList.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\ProductManage\\SliderManageList.cshtml",
+              "RelativeDocumentMoniker": "ShoeShopProject\\Views\\ProductManage\\SliderManageList.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Views\\ProductManage\\SliderManageList.cshtml",
+              "RelativeToolTip": "ShoeShopProject\\Views\\ProductManage\\SliderManageList.cshtml",
+              "ViewState": "AQIAAI8AAAAAAAAAAAAcwJ4AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T11:33:27.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductManageController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Controllers\\ProductManageController.cs",
+              "RelativeDocumentMoniker": "ShoeShopProject\\Controllers\\ProductManageController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Project\\shoeshopproject\\ShoeShopProject\\Controllers\\ProductManageController.cs",
+              "RelativeToolTip": "ShoeShopProject\\Controllers\\ProductManageController.cs",
+              "ViewState": "AQIAAE0CAAAAAAAAAAAgwGMCAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T11:40:03.521Z",
               "EditorCaption": ""
             }
           ]

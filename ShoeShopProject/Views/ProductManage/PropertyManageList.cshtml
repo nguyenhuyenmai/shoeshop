@@ -42,6 +42,38 @@
                                         <i class="me-1" data-feather="arrow-left"></i>
                                         Danh sách sản phẩm
                                     </a>
+
+                                    <!-- Button trigger modal-->
+                                    <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="modal" onclick="ClearProperty()" data-bs-target="#exampleModalCenter"><i class="me-1" data-feather="plus"></i>Thêm mới thành phần</button>
+                                    <!-- Modal-->
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Thêm mới thành phần</h5>
+                                                    <button class="btn-close" type="button" data-bs-dismiss="modal" onclick="ClearProperty()" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row p-3">
+                                                        <label class="small fw-bold" for="propertyType">Chọn loại thành phần</label>
+                                                        <select class="form-control mb-3" id="propertyType">
+                                                            <option selected disabled>Chọn thành phần</option>
+                                                            <option value="@Constants.PRO_CATEGORY">Phân loại</option>
+                                                            <option value="@Constants.PRO_BRAND">Thương hiệu</option>
+                                                            <option value="@Constants.PRO_COLOR">Màu sắc</option>
+                                                            <option value="@Constants.PRO_SIZE">Kích cỡ</option>
+                                                        </select>
+                                                        <label class="small fw-bold" for="propertyValue">Giá trị</label>
+                                                        <input class="form-control mb-2" type="text" id="propertyValue" value="" />
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-primary" type="button" onclick="AddProperty()">Thêm mới</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -52,9 +84,12 @@
                     <div class="row mb-4">
                         <!-- Phân loại -->
                         <div class="col-sm-3">
-                            <div class="card">
+                            <div class="card card-scrollable">
+                                <div class="card-header bg-transparent">
+                                        Quản lý phân loại
+                                    </div>
                                 <div class="card-body">
-                                    <div class="card-header bg-transparent">Quản lý phân loại</div>
+                                    
                                     <div class="table-responsive table-billing-history">
                                         <table id="" class="table mb-0">
                                             <thead>
@@ -69,7 +104,7 @@
                                                     foreach (Category category in listCategories)
                                                     {
                                                         <tr>
-                                                            <td class="text-start" colspan="4">
+                                                            <td class="text-start" colspan="3">
                                                                 <input type="text" class="form-control" name="category_@category.Id" style="padding: 0.5rem; 0.5rem;" value="@category.Name" />
                                                             </td>
                                                             <td class="text-end" colspan="2">
@@ -88,9 +123,10 @@
 
                         <!-- Thương hiệu -->
                         <div class="col-sm-3">
-                            <div class="card">
+                            <div class="card card-scrollable">
+                                <div class="card-header bg-transparent">Quản lý thương hiệu</div>
                                 <div class="card-body">
-                                    <div class="card-header bg-transparent">Quản lý thương hiệu</div>
+                                    
                                     <div class="table-responsive table-billing-history">
                                         <table id="" class="table mb-0">
                                             <thead>
@@ -105,7 +141,7 @@
                                                     foreach (Brand brand in listBrand)
                                                     {
                                                         <tr>
-                                                            <td class="text-start" colspan="4">
+                                                            <td class="text-start" colspan="3">
                                                                 <input type="text" class="form-control" name="brand_@brand.Id" style="padding: 0.5rem; 0.5rem;" value="@brand.Name" />
                                                             </td>
                                                             <td class="text-end" colspan="2">
@@ -124,9 +160,9 @@
 
                         <!-- Màu sắc -->
                         <div class="col-sm-3">
-                            <div class="card">
+                            <div class="card card-scrollable">
+                                <div class="card-header bg-transparent">Quản lý Màu sắc</div>
                                 <div class="card-body">
-                                    <div class="card-header bg-transparent">Quản lý Màu sắc</div>
                                     <div class="table-responsive table-billing-history">
                                         <table id="" class="table mb-0">
                                             <thead>
@@ -141,7 +177,7 @@
                                                     foreach (Color color in listColor)
                                                     {
                                                         <tr>
-                                                            <td class="text-start" colspan="4">
+                                                            <td class="text-start" colspan="3">
                                                                 <input type="text" class="form-control" name="color_@color.Id" style="padding: 0.5rem; 0.5rem;" value="@color.Cname" />
                                                             </td>
                                                             <td class="text-end" colspan="2">
@@ -160,9 +196,9 @@
 
                         <!-- Size -->
                         <div class="col-sm-3">
-                            <div class="card">
+                            <div class="card card-scrollable">
+                                <div class="card-header bg-transparent">Quản lý kích thước</div>
                                 <div class="card-body">
-                                    <div class="card-header bg-transparent">Quản lý kích thước</div>
                                     <div class="table-responsive table-billing-history">
                                         <table id="" class="table mb-0">
                                             <thead>
@@ -177,7 +213,7 @@
                                                     foreach (Size size in listSize)
                                                     {
                                                         <tr>
-                                                            <td class="text-start" colspan="4">
+                                                            <td class="text-start" colspan="3">
                                                                 <input type="number" class="form-control" name="size_@size.Id" style="padding: 0.5rem; 0.5rem;" value="@size.SizeVal" />
                                                             </td>
                                                             <td class="text-end" colspan="2">
@@ -234,7 +270,9 @@
         }
 
         function UpdateProperty(property, updateID) {
+            const positiveRegex = /^[1-9]\d*$/;
             var propertyName = '';
+
             if (property == '@Constants.PRO_CATEGORY') {
                 propertyName = document.querySelector('[name="category_' + updateID + '"]').value;
             }
@@ -247,7 +285,7 @@
             else if (property == '@Constants.PRO_SIZE') {
                 propertyName = document.querySelector('[name="size_' + updateID + '"]').value;
 
-                if (!isNaN(propertyName) || propertyName <= 0) {
+                if (property == '@Constants.PRO_SIZE' && !positiveRegex.test(propertyName)) {
                     showAlert('Kích thước phải lớn hơn 0', 'warning');
                     return;
                 }
@@ -273,12 +311,65 @@
                     if (data.success) {
                         if (data.updated) {
                             await showAlert('Cập nhật thành phần thành công', 'success');
+                        } else {
+                            await showAlert('Thành phần đã tồn tại', 'warning');
                         }
                         setTimeout(function () {
                             window.location.reload();
                         }, 1500);
                     } else {
                         await showAlert("Không thể cập nhật thành phần. vui lòng thử lại.", 'warning');
+                    }
+                },
+                error: async function (xhr, status, error) {
+                    await showAlert("Error", 'error');
+                }
+            });
+        }
+
+        function ClearProperty() {
+            document.getElementById("propertyType").selectedIndex = 0;
+            document.getElementById("propertyValue").value = "";
+        }
+
+        function AddProperty() {
+            const pType = document.getElementById("propertyType").value;
+            const pVal = document.getElementById("propertyValue").value;
+            const positiveRegex = /^[1-9]\d*$/;
+
+            if (!pType || pType == '') {
+                showAlert('Vui lòng chọn thành phần thêm mới', 'warning');
+                return;
+            }
+
+            if (!pVal || pVal == '') {
+                showAlert('Vui lòng điền giá trị thành phần thêm mới', 'warning');
+                return;
+            }
+
+            if (pType == '@Constants.PRO_SIZE' && !positiveRegex.test(pVal)) {
+                showAlert('Vui lòng điền giá trị kích thước thêm mới lớn hơn 0', 'warning');
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append('pType', pType);
+            formData.append('pVal', pVal);
+
+            $.ajax({
+                url: "/ProductManage/AddProperty",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: async function (data) {
+                    if (data.success) {
+                        await showAlert('Thêm mới thành phần thành công', 'success');
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        await showAlert("Không thể thêm mới thành phần. vui lòng thử lại.", 'warning');
                     }
                 },
                 error: async function (xhr, status, error) {
