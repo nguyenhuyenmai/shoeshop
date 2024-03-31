@@ -8,17 +8,10 @@
         <div class="sidenav-menu">
             <div class="nav accordion" id="accordionSidenav">
                 <div class="sidenav-menu-heading">Thống kê</div>
-                <a class="nav-link" href="@Url.Action("DashBoard", "AdminManage")">
+                <a class="nav-link" href="@Url.Action("DashBoard", "AdminManage", new {startDate = DateTime.Now.AddMonths(-1), endDate = DateTime.Now})">
                     <div class="nav-link-icon"><i data-feather="home"></i></div>
                     Cửa hàng
                 </a>
-                @if (role.Id == Constants.ROLE_SALE)
-                {
-                    <a class="nav-link" href="@Url.Action("MeDashBoard", "AdminManage")">
-                        <div class="nav-link-icon"><i data-feather="bar-chart"></i></div>
-                        Cá nhân
-                    </a>
-                }
 
                 <div class="sidenav-menu-heading">Quản lý</div>
                 @if (role.Id == Constants.ROLE_ADMIN)

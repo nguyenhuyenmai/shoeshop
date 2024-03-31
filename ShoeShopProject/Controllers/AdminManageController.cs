@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ShoeShopProject.Data;
 using ShoeShopProject.Models;
+using ShoeShopProject.Services;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ShoeShopProject.Controllers
@@ -23,23 +25,22 @@ namespace ShoeShopProject.Controllers
         /// </summary>
         /// <returns></returns>
         [Route("Dashboard")]
-        public IActionResult Dashboard()
+        public IActionResult Dashboard(DateTime? startDate, DateTime? endDate)
         {
             ServiceMapping serviceMapping = new ServiceMapping(_context, HttpContext);
             serviceMapping.MappingHeaderAdmin(this);
 
-            return View();
-        }
+            DateTime start = startDate ?? DateTime.Now.AddMonths(-1);
+            DateTime end = endDate ?? DateTime.Now;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [Route("MeDashboard")]
-        public IActionResult MeDashboard()
-        {
-            ServiceMapping serviceMapping = new ServiceMapping(_context, HttpContext);
-            serviceMapping.MappingHeaderAdmin(this);
+            DashboardService dashboardService = new DashboardService(_context);
+            ViewBag.SumTotalAmount = Constants.ConvertCurrency(dashboardService.SumTotalAmount(start, end));
+            ViewBag.SumTotalOrder = _context.Orders.Where(o => o.UpdateDate >= start && o.UpdateDate <= end).Count();
+            ViewBag.SumTotalOrderSuccess = _context.Orders.Where(o => o.OrderStatus == Constants.SUCCESS_ORDER && o.UpdateDate >= start && o.UpdateDate <= end).Count();
+            ViewBag.ListLastestOrder = dashboardService.GetListLastestOrder();
+            ViewBag.SumTotalProduct = dashboardService.SumTotalProductOrder(start, end);
+            ViewBag.StartDate = start;
+            ViewBag.EndDate = end;
 
             return View();
         }
@@ -264,10 +265,17 @@ namespace ShoeShopProject.Controllers
             return Json(new { success = false });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("ContactManageList")]
         public IActionResult ContactManageList()
         {
             ServiceMapping serviceMapping = new ServiceMapping(_context, HttpContext);
             serviceMapping.MappingHeaderAdmin(this);
+
+            ViewBag.ListContact = _context.Contacts.ToList();
 
             return View();
         }

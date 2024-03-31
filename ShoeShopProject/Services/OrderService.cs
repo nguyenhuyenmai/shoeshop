@@ -103,5 +103,90 @@ namespace ShoeShopProject.Services
 
 			return details;
 		}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<OrderManageView> GetListOrderManage()
+        {
+            List<OrderManageView> list = new List<OrderManageView>();
+            var result = (from od in _context.Orders
+                          join cus in _context.Users on od.UserId equals cus.Id
+                          orderby od.Id
+                          select new OrderManageView
+                          {
+                             orderId = od.Id,
+                             customerName = cus.Fullname,
+                             orderStatus = od.OrderStatus,
+                             paymentStatus = od.PaymentStatus,
+                             totalAmount = od.TotalAmount,
+                             updateDate = od.UpdateDate,
+                             saleID = od.SaleId,
+                             saleName = String.Empty,
+                          }).ToList();
+
+            if (result != null && result.Count > 0)
+            {
+                foreach (OrderManageView od in result)
+                {
+                    if (od.saleID != null)
+                    {
+                        od.saleName = GetOrderSaleName(od.orderId);
+                    }
+
+                    list.Add(od);
+                }
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="saleID"></param>
+        /// <returns></returns>
+        public List<OrderManageView> GetListOrderManageByMe(int saleID)
+        {
+            List<OrderManageView> list = new List<OrderManageView>();
+            var result = (from od in _context.Orders
+                          join cus in _context.Users on od.UserId equals cus.Id
+                          where od.SaleId == saleID
+                          orderby od.Id
+                          select new OrderManageView
+                          {
+                              orderId = od.Id,
+                              customerName = cus.Fullname,
+                              orderStatus = od.OrderStatus,
+                              paymentStatus = od.PaymentStatus,
+                              totalAmount = od.TotalAmount,
+                              updateDate = od.UpdateDate,
+                              saleID = od.SaleId
+                          }).ToList();
+
+            if (result != null && result.Count > 0)
+            {
+                list.AddRange(result);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private String GetOrderSaleName(int orderID)
+        {
+            string name = String.Empty;
+            Order order = _context.Orders.FirstOrDefault(x => x.Id == orderID);
+            if (order != null && order.SaleId != null)
+            {
+                name = _context.Admins.FirstOrDefault(x => x.Id == order.SaleId).Fullname;
+            }
+
+            return name;
+        }
 	}
 }

@@ -8,6 +8,8 @@
     List<CartDetails> headerCartDetails = ViewBag.HeaderCartDetails;
     List<Category> listCategories = ViewBag.HeaderListCategories;
     bool checkLogin = ViewBag.CheckLogin;
+    var categoryHeaderSrch = ViewBag.CategorySearch;
+    if (categoryHeaderSrch == null) categoryHeaderSrch = -1;
 }
 <!--Header-->
 <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
@@ -21,7 +23,9 @@
             foreach (Category category in listCategories)
             {
                 <li class="nav-item dropdown no-caret d-none d-md-block me-3">
-                    <a class="nav-link" href="@Url.Action("HomePage", "Home", new {category = category.Id})"><div class="menu-bar text-uppercase">@category.Name</div></a>
+                    <a class="nav-link @((categoryHeaderSrch == category.Id) ? "text-primary" : "")" id="category_@category.Id" href="@Url.Action("HomePage", "Home", new { category = category.Id })">
+                        <div class="menu-bar text-uppercase">@category.Name</div>
+                    </a>
                 </li>
             }
         }
@@ -120,6 +124,14 @@
             }
         } catch (error) {
             showAlert('Error' + error, 'error');
+        }
+    }
+
+    function toggleTextPrimary(element) {
+        if ($(element).find('.menu-bar').hasClass('text-primary')) {
+            $(element).find('.menu-bar').removeClass('text-primary');
+        } else {
+            $(element).find('.menu-bar').addClass('text-primary');
         }
     }
 </script>

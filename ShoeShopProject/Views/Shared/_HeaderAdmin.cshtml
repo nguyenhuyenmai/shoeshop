@@ -12,7 +12,7 @@
 <!--Header-->
 <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
     <!-- Navbar Brand-->
-    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="@Url.Action("Dashboard", "AdminManage")">NEXUS SNEAKER</a>
+    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="@Url.Action("Dashboard", "AdminManage", new {startDate = DateTime.Now.AddMonths(-1), endDate = DateTime.Now})">NEXUS SNEAKER</a>
     <!-- Navbar User-->
     <ul class="navbar-nav align-items-center ms-auto">
 @if (checkLogin && admin != null) {

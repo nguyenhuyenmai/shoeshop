@@ -10,8 +10,10 @@
     var gap = ViewBag.gap;
     var totalPage = ViewBag.totalPage;
     var currentPage = ViewBag.page;
-    string searchCodition = ViewBag.SearchCodition;
-    if (searchCodition == null) searchCodition = String.Empty;
+    string searchCondition = ViewBag.SearchCodition;
+    if (searchCondition == null) searchCondition = String.Empty;
+    var categorySrch = ViewBag.CategorySearch;
+    if (categorySrch == null) categorySrch = -1;
     List<int>? listChooseBrand = ViewBag.ListChooseBrand;
     List<int>? listChooseSize = ViewBag.ListChooseSize;
 }
@@ -85,7 +87,7 @@
                 <!-- Search Bar -->
                 <div class="row mb-4 d-flex justify-content-center">
                     <div class="col-sm-5 me-2">
-                        <input type="text" class="form-control me-2" id="searchCondition" value="@searchCodition" placeholder="Tìm kiếm tên sản phẩm, thương hiệu,...">
+                        <input type="text" class="form-control me-2" id="searchCondition" value="@searchCondition" placeholder="Tìm kiếm tên sản phẩm, thương hiệu,...">
                     </div>
                     <div class="col-sm-1 ms-2">
                         <button type="button" class="btn btn-primary" onclick="SearchProduct()">Tìm kiếm</button>
@@ -137,7 +139,7 @@
                         <div class="mb-4">
                             <div class="card-scrollable">
                                 <div class="row">
-                                   <a class="btn btn-outline-dark" href="/Home/HomePage">Xóa tìm kiếm</a>
+                                    <a class="btn btn-outline-dark" href="/Home/HomePage@(categorySrch >= 0 ? "?category=" + categorySrch : "")">Xóa tìm kiếm</a>
                                 </div>
                             </div>
                         </div>
@@ -256,9 +258,10 @@
             }
         }
 
-        function SearchProduct() {debugger
+        function SearchProduct() {
             // Lấy giá trị của ô nhập liệu searchCondition
             var searchCondition = document.getElementById("searchCondition").value;
+            var category = '@categorySrch';
 
             var selectedBrands = [];
             var checkboxes = document.querySelectorAll('input[name="brand"]:checked');
@@ -278,13 +281,21 @@
 
             var srchStr = '?search=' + searchCondition;
 
-            selectedBrands.forEach(function (brand) {
-                srchStr += '&brand=' + encodeURIComponent(brand);
-            });
+            if (selectedBrands.length > 0) {
+                selectedBrands.forEach(function (brand) {
+                    srchStr += '&brand=' + encodeURIComponent(brand);
+                });
+            }
+            
+            if (selectedSizes) {
+                selectedSizes.forEach(function (size) {
+                    srchStr += '&size=' + encodeURIComponent(size);
+                });
+            }
 
-            selectedSizes.forEach(function (size) {
-                srchStr += '&size=' + encodeURIComponent(size);
-            });
+            if (category >= 0) {
+                srchStr += '&category=' + category;
+            }
 
             window.location.href = '/Home/HomePage' + srchStr;
 

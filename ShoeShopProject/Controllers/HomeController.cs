@@ -86,6 +86,7 @@ namespace ShoeShopProject.Controllers
                 ViewBag.ListChooseBrand = _brand;
                 ViewBag.ListChooseSize = _size;
                 ViewBag.SearchCodition = search;
+                ViewBag.CategorySearch = category;
 
             }
             catch (Exception ex)
