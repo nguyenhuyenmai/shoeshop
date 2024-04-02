@@ -127,7 +127,7 @@
                                             }
                                             <div class="mb-3 mt-3 d-flex justify-content-start align-items-center">
                                                 <span class="fw-bold text-dark me-4">Số lượng</span>
-                                                <input class="form-control text-center me-10" id="quantity" style="width:90px" type="text" max="999999" maxlength="6" min="0" value="1" />
+                                            <input class="form-control text-center me-10" id="quantity" oninput="ChangeQuantityValue(this)" style="width:90px" type="number" max="999999" maxlength="6" min="0" value="1" />
                                                 <button class="btn btn-outline-primary me-3" onclick="AddToCart('@product.Id')">Thêm vào giỏ hàng</button>
                                             </div>
                                             <hr class="mb-2 mt-2"/>
@@ -229,6 +229,20 @@
                         productVariantId = '@pd.pId';
                     }
                 </text>
+            }
+        }
+
+        function isNumeric(value) {
+            // Sử dụng biểu thức chính quy để kiểm tra xem giá trị có phải là số hay không
+            return /^-?\d+$/.test(value);
+        }
+
+        function ChangeQuantityValue(inputElement) {
+            var quantity = inputElement.value;
+            // Kiểm tra giá trị nhập liệu
+            if (!isNumeric(quantity) || parseInt(quantity) < 0) {
+                inputElement.value = 1;
+                return;
             }
         }
 

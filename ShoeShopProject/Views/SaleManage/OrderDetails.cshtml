@@ -37,7 +37,7 @@
 								</h1>
 							</div>
 							<div class="col-12 col-xl-auto mb-3">
-								<a class="btn btn-sm btn-outline-primary" href="@Url.Action("OrderManageList" , "SaleManage")"><i class="me-1" data-feather="arrow-left"></i>Danh sách đơn hàng của tôi</a>
+								<a class="btn btn-sm btn-outline-primary" href="@Url.Action("MeOrderManageList" , "SaleManage")"><i class="me-1" data-feather="arrow-left"></i>Danh sách đơn hàng của tôi</a>
 							</div>
 						</div>
 					</div>
@@ -195,38 +195,46 @@
 									</div>
 								}
 								<div>
-									<button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#OrderModal"></i>Cập nhật đơn hàng</button>
-									<!-- Modal-->
-									<div class="modal fade" id="OrderModal" tabindex="-1" role="dialog" aria-labelledby="OrderModalTitle" aria-hidden="true">
-										<div class="modal-dialog modal-dialog-centered" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="OrderModalTitle">Cập nhật đơn hàng #@order.Id</h5>
-													<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-												</div>
-												<div class="modal-body">
-													<div class="row p-3">
-														<label class="small mb-2 fw-bold" for="paymentStatus">Trạng thái thanh toán</label>
-														<select class="form-control mb-3" id="paymentStatus">
-															<option class="fw-bold text-danger" value="0" selected="@(order.PaymentStatus == false)">Chưa thanh toán</option>
-															<option class="fw-bold text-success" value="1" selected="@(order.PaymentStatus == true)">Đã thanh toán</option>
-														</select>
-
-														<label class="small mb-2 fw-bold" for="orderStatus">Trạng thái đơn hàng</label>
-														<select class="form-control mb-3" id="orderStatus">
-															<option class="fw-bold text-primary" value="@Constants.NOT_APPROVE_ORDER" selected="@(order.OrderStatus == Constants.NOT_APPROVE_ORDER)">Chờ xử lý</option>
-															<option class="fw-bold text-info" value="@Constants.APPROVE_ORDER" selected="@(order.OrderStatus == Constants.APPROVE_ORDER)">Đang xử lý</option>
-															<option class="fw-bold text-success" value="@Constants.SUCCESS_ORDER" selected="@(order.OrderStatus == Constants.SUCCESS_ORDER)">Hoàn thành</option>
-															<option class="fw-bold text-danger" value="@Constants.CANCEL_ORDER" selected="@(order.OrderStatus == Constants.CANCEL_ORDER)">Đã hủy</option>
-														</select>
+									@if (order.OrderStatus != Constants.SUCCESS_ORDER && order.OrderStatus != Constants.CANCEL_ORDER) {
+										<button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#OrderModal">Cập nhật đơn hàng</button>
+										<!-- Modal-->
+										<div class="modal fade" id="OrderModal" tabindex="-1" role="dialog" aria-labelledby="OrderModalTitle" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="OrderModalTitle">Cập nhật đơn hàng #@order.Id</h5>
+														<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
-												</div>
-												<div class="modal-footer">
-													<button class="btn btn-primary" type="button" onclick="UpdateOrder()">Cập nhật</button>
+													<div class="modal-body">
+														<div class="row p-3">
+															<label class="small mb-2 fw-bold" for="paymentStatus">Trạng thái thanh toán</label>
+															<select class="form-control mb-3" id="paymentStatus">
+																@if (order.PaymentStatus == false)
+																{
+																<option class="fw-bold text-danger" value="0" selected>Chưa thanh toán</option>
+																}
+																<option class="fw-bold text-success" value="1" selected="@(order.PaymentStatus == true)">Đã thanh toán</option>
+															</select>
+
+															<label class="small mb-2 fw-bold" for="orderStatus">Trạng thái đơn hàng</label>
+															<select class="form-control mb-3" id="orderStatus">
+																<option class="fw-bold text-primary" value="@Constants.NOT_APPROVE_ORDER" selected="@(order.OrderStatus == Constants.NOT_APPROVE_ORDER)">Chờ xử lý</option>
+																<option class="fw-bold text-info" value="@Constants.APPROVE_ORDER" selected="@(order.OrderStatus == Constants.APPROVE_ORDER)">Đang xử lý</option>
+																@if (order.PaymentStatus == true)
+																{
+																	<option class="fw-bold text-success" value="@Constants.SUCCESS_ORDER" selected="@(order.OrderStatus == Constants.SUCCESS_ORDER)">Hoàn thành</option>
+																}
+																<option class="fw-bold text-danger" value="@Constants.CANCEL_ORDER" selected="@(order.OrderStatus == Constants.CANCEL_ORDER)">Đã hủy</option>
+															</select>
+														</div>
+													</div>
+													<div class="modal-footer">
+														<button class="btn btn-primary" type="button" onclick="UpdateOrder()">Cập nhật</button>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									}
 								</div>
 							</div>
 						</div>
@@ -267,7 +275,12 @@
 							window.location.reload();
 						}, 1500);
 					} else {
-						await showAlert("Không cập nhật. vui lòng thử lại.", 'warning');
+						if (data.mess) {
+							await showAlert("Sản phẩm không đủ số lượng. Vui lòng nhập thêm hàng hoặc liên hệ với khách hàng.", 'warning');
+						} else { 
+							await showAlert("Không cập nhật. vui lòng thử lại.", 'warning');
+						}
+						
 					}
 				},
 				error: async function (xhr, status, error) {

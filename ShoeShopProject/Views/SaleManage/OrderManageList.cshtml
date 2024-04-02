@@ -69,56 +69,62 @@
                                             {
                                                 foreach (OrderManageView order in listOrderManage)
                                                 {
-                                                    <tr>
-                                                        <td colspan="1" class="align-middle"># @order.orderId</td>
-                                                        <td colspan="2" class="align-middle">@order.customerName</td>
-                                                        <td colspan="2" class="align-middle">@order.updateDate.ToString("dd-MM-yyyy")</td>
-                                                        <td colspan="2" class="align-middle">
-                                                            @if (order.paymentStatus == false)
-                                                            {
-                                                                <span class="fw-bold text-red">Chưa thanh toán</span>
-                                                            }
-                                                            else
-                                                            {
-                                                                <span class="fw-bold text-success">Đã thanh toán</span>
-                                                            }
-                                                        </td>
-                                                        <td colspan="2" class="align-middle">
-                                                            @if (order.orderStatus == Constants.NOT_APPROVE_ORDER)
-                                                            {
-                                                                <span class="fw-bold text-primary">Chờ xử lý</span>
-                                                            }
-                                                            else if (order.orderStatus == Constants.APPROVE_ORDER)
-                                                            {
-                                                                <span class="fw-bold text-info">Đang xử lý</span>
-                                                            }
-                                                            else if (order.orderStatus == Constants.CANCEL_ORDER)
-                                                            {
-                                                                <span class="fw-bold text-danger">Đã hủy</span>
-                                                            }
-                                                            else if (order.orderStatus == Constants.SUCCESS_ORDER)
-                                                            {
-                                                                <span class="fw-bold text-success">Hoàn thành</span>
-                                                            }
-                                                        </td>
-                                                        <td colspan="2" class="align-middle">@(order.saleID == null ? "Chưa có" : order.saleName)</td>
-                                                        <td colspan="2" class="align-middle">@Constants.ConvertCurrency(order.totalAmount)</td>
-                                                        <td colspan="2" class="align-middle">
-                                                            @if (order.saleID == null)
-                                                            {
-                                                                <a class="btn btn-sm btn-outline-danger" href="@Url.Action("OrderDetails", "SaleManage", new {orderID = order.orderId})">Xử lý đơn hàng</a>
-                                                            }
-                                                            else if (order.saleID != adminID)
-                                                            {
-                                                                <button class="btn btn-sm btn-outline-success">Nhân viên khác xử lý</button>
-                                                            }
-                                                            else
-                                                            {
-                                                                <a class="btn btn-sm btn-outline-primary" href="@Url.Action("OrderDetails", "SaleManage", new {orderID = order.orderId})">Cập nhật đơn hàng</a>
-                                                            }
-                                                            
-                                                        </td>
-                                                    </tr>
+                                                    if (order.saleID != adminID)
+                                                    {
+                                                        <tr>
+                                                            <td colspan="1" class="align-middle"># @order.orderId</td>
+                                                            <td colspan="2" class="align-middle">@order.customerName</td>
+                                                            <td colspan="2" class="align-middle">@order.updateDate.ToString("dd-MM-yyyy")</td>
+                                                            <td colspan="2" class="align-middle">
+                                                                @if (order.paymentStatus == false)
+                                                                {
+                                                                    <span class="fw-bold text-red">Chưa thanh toán</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="fw-bold text-success">Đã thanh toán</span>
+                                                                }
+                                                            </td>
+                                                            <td colspan="2" class="align-middle">
+                                                                @if (order.orderStatus == Constants.NOT_APPROVE_ORDER)
+                                                                {
+                                                                    <span class="fw-bold text-primary">Chờ xử lý</span>
+                                                                }
+                                                                else if (order.orderStatus == Constants.APPROVE_ORDER)
+                                                                {
+                                                                    <span class="fw-bold text-info">Đang xử lý</span>
+                                                                }
+                                                                else if (order.orderStatus == Constants.CANCEL_ORDER)
+                                                                {
+                                                                    <span class="fw-bold text-danger">Đã hủy</span>
+                                                                }
+                                                                else if (order.orderStatus == Constants.SUCCESS_ORDER)
+                                                                {
+                                                                    <span class="fw-bold text-success">Hoàn thành</span>
+                                                                }
+                                                            </td>
+                                                            <td colspan="2" class="align-middle">@(order.saleID == null ? "Chưa có" : order.saleName)</td>
+                                                            <td colspan="2" class="align-middle">@Constants.ConvertCurrency(order.totalAmount)</td>
+                                                            <td colspan="2" class="align-middle">
+                                                                @if (order.saleID != null) 
+                                                                {
+                                                                    if (order.orderStatus == Constants.SUCCESS_ORDER || order.orderStatus == Constants.CANCEL_ORDER)
+                                                                    {
+                                                                        <a class="btn btn-sm btn-outline-success" href="@Url.Action("OrderDetails", "SaleManage", new {orderID = order.orderId})">Chi tiết đơn hàng</a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="text-orange">Nhân viên khác xử lý</span>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a class="btn btn-sm btn-outline-primary" href="@Url.Action("OrderDetails", "SaleManage", new {orderID = order.orderId})">Xử lý đơn hàng</a>
+                                                                }
+
+                                                            </td>
+                                                        </tr>
+                                                    }
                                                 }
                                             }
                                         </tbody>

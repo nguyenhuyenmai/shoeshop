@@ -80,18 +80,41 @@ namespace ShoeShopProject.Controllers
                 Order order = _context.Orders.FirstOrDefault(p => p.Id == orderID);
                 if (order != null)
                 {
-                    order.PaymentStatus = paymentStatus;
-                    order.OrderStatus = orderStatus;
-                    order.SaleId = adminSession.adminID;
-                    order.UpdateDate = DateTime.Now;
-                    _context.Orders.Update(order);
-                    _context.SaveChanges();
+					order.PaymentStatus = paymentStatus;
+					order.OrderStatus = orderStatus;
+					order.SaleId = adminSession.adminID;
+					order.UpdateDate = DateTime.Now;
+					_context.Orders.Update(order);
+					_context.SaveChanges();
+
+					if (paymentStatus == true && orderStatus == Constants.SUCCESS_ORDER)
+                    {
+                        List<OrderDetail> orderDetails = _context.OrderDetails.Where(o => o.OrderId == order.Id).ToList();
+                        if (orderDetails != null && orderDetails.Count > 0)
+                        {
+                            foreach (OrderDetail detail in orderDetails)
+                            {
+                                ProductVariant product = _context.ProductVariants.FirstOrDefault(p => p.Id == detail.ProductId);
+                                if (product != null && product.Quantity >= detail.Quantity)
+                                {
+                                    product.Quantity -= detail.Quantity;
+                                    _context.ProductVariants.Update(product);
+                                    _context.SaveChanges();
+                                } 
+                                else
+                                {
+									return Json(new { success = false, mess = true });
+								}
+                            }
+                        }
+
+                    }
 
 					return Json(new { success = true });
 				}
             }
 
-			return Json(new { success = false });
+			return Json(new { success = false, mess = false });
 		}
 
 		/// <summary>

@@ -101,7 +101,14 @@
                                                         </td>
                                                         <td colspan="2" class="align-middle">@Constants.ConvertCurrency(order.totalAmount)</td>
                                                         <td colspan="2" class="align-middle">
-                                                            <a class="btn btn-sm btn-outline-primary" href="@Url.Action("OrderDetails", "SaleManage", new {orderID = order.orderId})">Cập nhật đơn hàng</a>
+                                                            @if (order.orderStatus == Constants.SUCCESS_ORDER || order.orderStatus == Constants.CANCEL_ORDER)
+                                                            {
+                                                                <a class="btn btn-sm btn-outline-success" href="@Url.Action("OrderDetails", "SaleManage", new {orderID = order.orderId})">Chi tiết đơn hàng</a>
+                                                            }
+                                                            else
+                                                            {
+                                                                <a class="btn btn-sm btn-outline-primary" href="@Url.Action("OrderDetails", "SaleManage", new {orderID = order.orderId})">Cập nhật đơn hàng</a>
+                                                            }
                                                         </td>
                                                     </tr>
                                                 }
