@@ -178,7 +178,7 @@ namespace ShoeShopProject.Services
         /// <param name="size"></param>
         /// <param name="category"></param>
         /// <returns></returns>
-        public List<Product> GetProductListPaging(int page, List<int>? brand, string? search, List<int>? size, int? category)
+        public List<Product> GetProductListPaging(int page, List<int>? brand, string? search, List<int>? size, int? category, string? sort)
         {
             var res = _context.Products.Where(c => c.Id >= 0);
 
@@ -199,8 +199,19 @@ namespace ShoeShopProject.Services
             {
                 res = res.Where(s => s.ProductVariants.Any(p => size.Contains(p.SizeId)));
             }
+            if (!String.IsNullOrEmpty(sort))
+            {
+                if ("asc".Equals(sort))
+                {
+                    res = res.OrderBy(s => s.Price);
+                }
+                else
+                {
+                    res = res.OrderByDescending(s => s.Price);
+                }
+            }
 
-            List<Product> products = res.OrderBy(s => s.Id).ToPagedList(page, 12).ToList();
+            List<Product> products = res.ToPagedList(page, 12).ToList();
 
             return products;
         }

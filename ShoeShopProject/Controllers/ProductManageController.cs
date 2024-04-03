@@ -457,7 +457,7 @@ namespace ShoeShopProject.Controllers
                 Product product = _context.Products.FirstOrDefault(x => x.Id == productID);
                 if (product != null)
                 {
-                    ProductVariant variant = _context.ProductVariants.FirstOrDefault(x => x.SizeId == size && x.ColorId == color);
+                    ProductVariant variant = _context.ProductVariants.FirstOrDefault(x => x.ProductId == product.Id && x.SizeId == size && x.ColorId == color);
                     if (variant == null)
                     {
                         variant = new ProductVariant();

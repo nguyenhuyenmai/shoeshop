@@ -138,7 +138,15 @@
                         </div>
                         <div class="mb-4">
                             <div class="card-scrollable">
-                                <div class="row">
+                                <div class="row mb-2">
+                                    <div class="col-6 text-start">
+                                        <a class="btn btn-sm btn-outline-orange" href="@Url.Action("HomePage", "Home", new {sort = "desc"})">Giá giảm dần</a>
+                                    </div>
+                                    <div class="col-6 text-start">
+                                        <a class="btn btn-sm btn-outline-primary" href="@Url.Action("HomePage", "Home", new {sort = "asc"})">Giá tăng dần</a>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
                                     <a class="btn btn-outline-dark" href="/Home/HomePage@(categorySrch >= 0 ? "?category=" + categorySrch : "")">Xóa tìm kiếm</a>
                                 </div>
                             </div>

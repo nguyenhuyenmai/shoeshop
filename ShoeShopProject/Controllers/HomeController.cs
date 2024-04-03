@@ -23,7 +23,7 @@ namespace ShoeShopProject.Controllers
 		/// Gọi đến màn hình home page
 		/// </summary>
 		/// <returns></returns>
-		public IActionResult HomePage(int? page, List<int>? brand, List<int>? size, string? search, int? category)
+		public IActionResult HomePage(int? page, List<int>? brand, List<int>? size, string? search, int? category, string? sort)
 		{
 			try
 			{
@@ -67,7 +67,7 @@ namespace ShoeShopProject.Controllers
                     totalPage = productCount / 12 + 1;
                 }
 
-                List<Product> listProducts = productService.GetProductListPaging(_page, brand, search, size, category);
+                List<Product> listProducts = productService.GetProductListPaging(_page, brand, search, size, category, sort);
                 ViewBag.totalPage = totalPage;
                 ViewBag.page = _page;
                 ViewBag.gap = 2;
