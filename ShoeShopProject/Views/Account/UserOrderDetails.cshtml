@@ -208,6 +208,12 @@
 												<label>
 													Chi tiết thanh toán:
 													<span class="fw-bold">@payment.Description</span>
+													@if (@payment.Image != null)
+													{
+														<div class="img-container" id="paymentImg_@payment.Id" style="max-height: 250px; max-width: 250px;">
+															<img class="img-fluid" src="@payment.Image" />
+														</div>
+													}
 												</label>
 											</div>
 										</div>

@@ -81,5 +81,32 @@ namespace ShoeShopProject.Services
 
             return list;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<decimal> GetListRevenueInYear()
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime startOfYear = new DateTime(currentDate.Year, 1, 1);
+            DateTime endOfYear = new DateTime(currentDate.Year, 12, 31);
+
+            List<decimal> revenueList = new List<decimal>();
+
+            for (int month = 1; month <= 12; month++)
+            {
+                DateTime startOfMonth = new DateTime(currentDate.Year, month, 1);
+                DateTime endOfMonth = startOfMonth.AddMonths(1).AddDays(-1);
+
+                decimal totalAmount = _context.Orders
+                    .Where(o => o.OrderStatus == Constants.SUCCESS_ORDER && o.UpdateDate >= startOfMonth && o.UpdateDate <= endOfMonth)
+                    .Sum(o => o.TotalAmount);
+
+                revenueList.Add(totalAmount);
+            }
+
+            return revenueList;
+        }
     }
 }

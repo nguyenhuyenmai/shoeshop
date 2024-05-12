@@ -117,14 +117,14 @@
                                                         {
                                                             <tr class="border-bottom">
                                                                 <td class="col-5 align-middle">
-                                                                    <input type="radio" name="paymentMethod" value="@payment.Id" />
+                                                                    <input type="radio" name="paymentMethod" value="@payment.Id" data-img-id="paymentImg_@payment.Id" @(payment == listPaymentMethod[0] ? "checked" : "") />
                                                                     <label class="fw-bold">@payment.PaymentMethod</label>
                                                                     <div class="payment-desc">
                                                                         <p>@payment.Description</p>
                                                                         @if (@payment.Image != null)
                                                                         {
-                                                                            <div class="">
-                                                                                <img class="payment-img" src="@payment.Image" />
+                                                                            <div class="img-container" id="paymentImg_@payment.Id" style="max-height: 250px; max-width: 250px;">
+                                                                                <img class="img-fluid" src="@payment.Image" />
                                                                             </div>
                                                                         }
                                                                     </div>
@@ -136,7 +136,7 @@
                                                     {
                                                         <tr class="border-bottom">
                                                             <td class="col-5 align-middle">
-                                                                <input type="radio" name="paymentMethod" value="0" />
+                                                                <input type="radio" name="paymentMethod" value="0" data-img-id="paymentImg_0" checked />
                                                                 <span class="fw-bold">COD</span>
                                                             </td>
                                                         </tr>
@@ -168,6 +168,14 @@
     <script src="/js/scripts.js"></script>
     <script src="/js/jquery-3.6.0.min.js"></script>
     <script>
+        // Lấy tất cả các ảnh
+        var allImages = document.querySelectorAll('.img-container');
+
+        // Ẩn tất cả các ảnh
+        allImages.forEach(function (image) {
+            image.style.display = 'none';
+        });
+
         document.addEventListener("DOMContentLoaded", function () {
             // Lấy danh sách tất cả các phần tử có class 'cart_total_price'
             const cartTotalPriceElements = document.querySelectorAll('.cart_total_price');
@@ -186,6 +194,50 @@
                 var cartAmountTotalElement = document.getElementById("cartAmountTotal");
                 cartAmountTotalElement.textContent = convertCurrency(total); // Định dạng tổng với hai chữ số sau dấu thập phân
             }
+
+            // Lấy thẻ input theo id
+            var phoneInput = document.getElementById('phone');
+
+            // Thêm sự kiện input vào thẻ input
+            phoneInput.addEventListener('input', function (event) {
+                // Lấy giá trị của input
+                var inputValue = event.target.value;
+
+                // Loại bỏ tất cả các ký tự không phải số
+                var numericValue = inputValue.replace(/\D/g, '');
+
+                // Nếu giá trị sau khi loại bỏ không phải là số, cập nhật giá trị của input
+                if (numericValue !== inputValue) {
+                    event.target.value = numericValue;
+                }
+
+                // Kiểm tra độ dài của số điện thoại, nếu quá 11 số thì cắt bớt
+                if (numericValue.length > 11) {
+                    event.target.value = numericValue.slice(0, 11);
+                }
+            });
+
+            // Lấy tất cả các input radio có name là "paymentMethod"
+            var radioButtons = document.querySelectorAll('input[name="paymentMethod"]');
+
+            // Lặp qua từng input radio để thêm sự kiện change
+            radioButtons.forEach(function (radioButton) {
+                radioButton.addEventListener('change', function () {
+                    // Lấy id của ảnh tương ứng từ thuộc tính data-img-id
+                    var imgId = this.getAttribute('data-img-id');
+                    // Lấy tất cả các ảnh
+                    var allImages = document.querySelectorAll('.img-container');
+                    // Ẩn tất cả các ảnh
+                    allImages.forEach(function (image) {
+                        image.style.display = 'none';
+                    });
+                    // Hiển thị ảnh tương ứng với radio được chọn
+                    var selectedImage = document.getElementById(imgId);
+                    if (selectedImage) {
+                        selectedImage.style.display = 'block';
+                    }
+                });
+            });
 
         });
 
@@ -266,6 +318,7 @@
             // Format số với dấu phân cách hàng nghìn và ký hiệu tiền tệ "₫"
             return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
         }
+
     </script>
 </body>
 </html>

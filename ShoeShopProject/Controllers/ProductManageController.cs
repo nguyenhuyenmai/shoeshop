@@ -525,7 +525,7 @@ namespace ShoeShopProject.Controllers
             serviceMapping.MappingHeaderAdmin(this);
 
             ViewBag.ListSlider = _context.Sliders.ToList();
-            ViewBag.ListPayemnt = _context.Payments.ToList();
+            ViewBag.ListContact = _context.Contacts.ToList();
 
             return View();
         }

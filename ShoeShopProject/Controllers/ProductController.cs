@@ -34,10 +34,12 @@ namespace ShoeShopProject.Controllers
             {
                 Product product = productService.GetProductById(productID);
                 List<ProductDetails> listProductDetails = productService.GetListProductVariant(productID);
+                List<Product> listProductSame = productService.ListProductsSameType(productID);
                 if (product != null)
                 {
                     ViewBag.Product = product;
                     ViewBag.ListProductDetails = listProductDetails;
+                    ViewBag.ListProductSame = listProductSame;
                 }
             }
 

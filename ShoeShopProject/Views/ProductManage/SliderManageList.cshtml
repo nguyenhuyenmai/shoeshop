@@ -2,7 +2,7 @@
 @using ShoeShopProject.ViewModels;
 @{
     List<Slider> listSlider = ViewBag.ListSlider;
-    List<Payment> listPayment = ViewBag.ListPayemnt;
+    List<Contact> listContact = ViewBag.ListContact;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -31,27 +31,27 @@
                             <div class="row align-items-center justify-content-between pt-3">
                                 <div class="col-auto mb-3">
                                     <h1 class="page-header-title">
-                                        <div class="page-header-icon"><i data-feather="shopping-bag"></i></div>
-                                        Quản lý quảng cáo
+                                        <div class="page-header-icon"><i data-feather="smartphone"></i></div>
+                                        Quản lý liên hệ
                                     </h1>
                                 </div>
                                 <div class="col-12 col-xl-auto mb-3">
-                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" onclick="ClearPayment()" data-bs-target="#addPaymentModal"><i class="me-1" data-feather="plus-square"></i>Thêm phương thức thanh toán</button>
+                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" onclick="ClearPayment()" data-bs-target="#addPaymentModal"><i class="me-1" data-feather="plus-square"></i>Thêm liên hệ mới</button>
                                     <!-- Modal-->
                                     <div class="modal fade" id="addPaymentModal" tabindex="-1" role="dialog" aria-labelledby="addPaymentModalTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="addPaymentModalTitle">Thêm mới thanh toán</h5>
+                                                    <h5 class="modal-title" id="addPaymentModalTitle">Thêm liên hệ mới</h5>
                                                     <button class="btn-close" type="button" data-bs-dismiss="modal" onclick="ClearPayment()" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row p-3">
 
-                                                        <label class="small fw-bold" for="addPayMethod">Kiểu thanh toán</label>
+                                                        <label class="small fw-bold" for="addPayMethod">Tên liên hệ</label>
                                                         <input class="form-control mb-2" type="text" id="addPayMethod" value="" />
 
-                                                        <label class="small fw-bold" for="addPayDesc">Mô tả thanh toán</label>
+                                                        <label class="small fw-bold" for="addPayDesc">Mô tả</label>
                                                         <textarea class="form-control mb-2" id="addPayDesc"></textarea>
 
                                                         <img class="mb-2" style="max-width: 250px; max-height: 450px; object-fit: contain;" id="addPayViewImg" src="" alt="" />
@@ -99,38 +99,38 @@
                 <!-- Main page content-->
                 <div class="container-fluid px-4">
                     <div class="row mb-3">
-                        <div class="col-xl-7">
+                        <div class="col-xl-6">
                             <div class="card card-scrollable">
                                 <div class="card-header bg-transparent">
-                                    Quản lý thanh toán
+                                    Quản lý liên hệ
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive table-billing-history">
                                         <table id="" class="table mb-0">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="3">Kiểu thanh toán</th>
-                                                    <th colspan="4">Mô tả thanh toán</th>
+                                                    <th colspan="3">Liên hệ</th>
+                                                    <th colspan="4">Mô tả</th>
                                                     <th colspan="4">Hình ảnh</th>
                                                     <th colspan="2">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if (listPayment != null && listPayment.Count > 0)
+                                                @if (listContact != null && listContact.Count > 0)
                                                 {
-                                                    foreach (Payment payment in listPayment)
+                                                    foreach (Contact contact in listContact)
                                                     {
                                                         <tr>
-                                                            <td colspan="3" class="align-middle">@payment.PaymentMethod</td>
-                                                            <td colspan="4" class="align-middle">@payment.Description</td>
+                                                            <td colspan="3" class="align-middle">@contact.ContactName</td>
+                                                            <td colspan="4" class="align-middle"><a class="text-decoration-none" href="@contact.ContactDescription" target="_blank">@contact.ContactDescription</a></td>
                                                             <td colspan="4">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img style="max-width: 350px; max-height: 350px; object-fit: contain;" src="@payment.Image" />
+                                                                    <img style="max-width: 350px; max-height: 350px; object-fit: contain;" src="@contact.ImageUrl" />
                                                                 </div>
                                                             </td>
                                                             <td colspan="2" class="align-middle">
-                                                                <button class="btn btn-datatable btn-icon btn-transparent-dark me-2" onclick="UpdatePayment()"><i data-feather="edit"></i></button>
-                                                                <button class="btn btn-datatable btn-icon btn-transparent-dark" onclick="DeletePayment('@payment.Id')"><i data-feather="trash-2"></i></button>
+                                                                <button class="btn btn-datatable btn-icon btn-transparent-dark me-2" onclick="UpdateContact()"><i data-feather="edit"></i></button>
+                                                                <button class="btn btn-datatable btn-icon btn-transparent-dark" onclick="DeleteContact('@contact.Id')"><i data-feather="trash-2"></i></button>
                                                             </td>
                                                         </tr>
                                                     }
@@ -141,7 +141,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5">
+                        <div class="col-xl-6">
                             <div class="card card-scrollable">
                                 <div class="card-header bg-transparent">
                                     Quản lý quảng cáo

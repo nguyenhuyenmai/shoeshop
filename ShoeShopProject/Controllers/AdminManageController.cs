@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ShoeShopProject.Data;
 using ShoeShopProject.Models;
 using ShoeShopProject.Services;
+using System.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -39,6 +40,7 @@ namespace ShoeShopProject.Controllers
             ViewBag.SumTotalOrderSuccess = _context.Orders.Where(o => o.OrderStatus == Constants.SUCCESS_ORDER && o.UpdateDate >= start && o.UpdateDate <= end).Count();
             ViewBag.ListLastestOrder = dashboardService.GetListLastestOrder();
             ViewBag.SumTotalProduct = dashboardService.SumTotalProductOrder(start, end);
+            ViewBag.ListRevenueInYear = dashboardService.GetListRevenueInYear();
             ViewBag.StartDate = start;
             ViewBag.EndDate = end;
 
@@ -265,6 +267,75 @@ namespace ShoeShopProject.Controllers
             return Json(new { success = false });
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("AddPaymentMethod")]
+        public IActionResult AddPaymentMethod(string paymentMethod, string paymentDesc, IFormFile paymentImg)
+        {
+            if (!string.IsNullOrEmpty(paymentMethod) && !string.IsNullOrEmpty(paymentDesc))
+            {
+                Payment payment = new Payment();
+
+                var imagePath = Path.Combine("wwwroot", "assets", "img", "payment");
+                Directory.CreateDirectory(imagePath);
+
+                string usrImagePath = String.Empty;
+                if (paymentImg != null && paymentImg.Length > 0)
+                {
+                    string fileNameWithoutExtension = $"payment_{DateTime.Now:yyyyMMdd_HHmmss}";
+                    string fileExtension = Path.GetExtension(paymentImg.FileName);
+                    string fileName = $"{fileNameWithoutExtension}{fileExtension}";
+
+                    // Save the image to the directory
+                    imagePath = Path.Combine(imagePath, fileName);
+
+                    usrImagePath = $"/assets/img/payment/{fileName}";
+                    payment.Image = usrImagePath;
+                }
+
+                payment.PaymentMethod = paymentMethod;
+                payment.Description = paymentDesc;
+
+                _context.Payments.Add(payment);
+                _context.SaveChanges();
+
+                if (paymentImg != null && !string.IsNullOrEmpty(imagePath))
+                {
+                    using (var stream = new FileStream(imagePath, FileMode.Create))
+                    {
+                        paymentImg.CopyTo(stream);
+                    }
+                }
+
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("DeletePaymentMethod")]
+        public IActionResult DeletePaymentMethod(int paymentId)
+        {
+            Payment payment = _context.Payments.FirstOrDefault(x => x.Id == paymentId);
+            if (payment != null)
+            {
+                _context.Payments.Remove(payment);
+                _context.SaveChanges();
+
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false });
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -275,7 +346,7 @@ namespace ShoeShopProject.Controllers
             ServiceMapping serviceMapping = new ServiceMapping(_context, HttpContext);
             serviceMapping.MappingHeaderAdmin(this);
 
-            ViewBag.ListContact = _context.Contacts.ToList();
+            ViewBag.ListPayemnt = _context.Payments.ToList();
 
             return View();
         }

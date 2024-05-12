@@ -35,7 +35,15 @@
 @if (checkLogin && user != null) {
             <!-- Carts Dropdown-->
             <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
-            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="shopping-cart"></i></a>
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="shopping-cart"></i>
+                    @if (headerCartDetails != null && headerCartDetails.Any())
+                    {
+                        <strong class="badge-sm text-red fw-bold">@headerCartDetails.Count</strong>
+                    } else
+                    {
+                        <strong class="badge-sm text-red fw-bold">0</strong>
+                    }
+                </a>
                 <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
                     <h6 class="dropdown-header dropdown-notifications-header">
                     <i class="me-2" data-feather="shopping-cart"></i>

@@ -1,7 +1,7 @@
 ﻿@using ShoeShopProject.Models;
 @using ShoeShopProject.ViewModels;
 @{
-    List<Contact> listContact = ViewBag.ListContact;
+    List<Payment> listPayment = ViewBag.ListPayemnt;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -31,36 +31,36 @@
                                 <div class="col-auto mb-3">
                                     <h1 class="page-header-title">
                                         <div class="page-header-icon"><i data-feather="shopping-bag"></i></div>
-                                        Quản lý liên hệ
+                                        Quản lý thanh toán
                                     </h1>
                                 </div>
                                 <div class="col-12 col-xl-auto mb-3">
-                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" onclick="ClearContact()" data-bs-target="#addContactModal"><i class="me-1" data-feather="plus-square"></i>Thêm mới liên hệ</button>
+                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" onclick="ClearPayment()" data-bs-target="#addPaymentModal"><i class="me-1" data-feather="plus-square"></i>Thêm phương thức thanh toán</button>
                                     <!-- Modal-->
-                                    <div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="addContactModalTitle" aria-hidden="true">
+                                    <div class="modal fade" id="addPaymentModal" tabindex="-1" role="dialog" aria-labelledby="addPaymentModalTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="addContactModalTitle">Thêm mới liên hệ</h5>
-                                                    <button class="btn-close" type="button" data-bs-dismiss="modal" onclick="ClearContact()" aria-label="Close"></button>
+                                                    <h5 class="modal-title" id="addPaymentModalTitle">Thêm phương thức thanh toán</h5>
+                                                    <button class="btn-close" type="button" data-bs-dismiss="modal" onclick="ClearPayment()" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row p-3">
 
-                                                        <label class="small fw-bold" for="addContactName">Tên liên hệ</label>
-                                                        <input class="form-control mb-2" type="text" id="addContactName" value="" />
+                                                        <label class="small fw-bold" for="addPaymentName">Loại thanh toán</label>
+                                                        <input class="form-control mb-2" type="text" id="addPaymentName" value="" />
 
-                                                        <label class="small fw-bold" for="addContactDesc">Mô tả</label>
-                                                        <textarea class="form-control mb-2" id="addContactDesc"></textarea>
+                                                        <label class="small fw-bold" for="addPaymentDesc">Mô tả</label>
+                                                        <textarea class="form-control mb-2" id="addPaymentDesc"></textarea>
 
-                                                        <img class="mb-2" style="max-width: 350px; max-height: 350px; object-fit: contain;" id="addContactViewImg" src="" alt="" />
-                                                        <input type="file" class="form-control" style="display: none;" id="addContactImg" accept="image/*">
+                                                        <img class="mb-2" style="max-width: 250px; max-height: 250px; object-fit: contain;" id="addPayViewImg" src="" alt="" />
+                                                        <input type="file" class="form-control" style="display: none;" id="addPayImg" accept="image/*">
                                                         <button class="btn btn-primary" onclick="UploadImage()" type="button">Tải lên ảnh mới</button>
 
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button class="btn btn-primary" type="button" onclick="AddContact()">Thêm mới</button>
+                                                    <button class="btn btn-primary" type="button" onclick="AddPayment()">Thêm mới</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -71,7 +71,7 @@
                     </div>
                 </header>
                 <!-- Main page content-->
-                <div class="container-fluid px-4">
+                <div class="container-fluid px-4 mb-4">
                     <div class="row">
                         <div class="card card-scrollable">
                             <div class="card-header bg-transparent">
@@ -82,28 +82,28 @@
                                     <table id="" class="table mb-0">
                                         <thead>
                                             <tr>
-                                                <th colspan="4">Liên hệ</th>
-                                                <th colspan="4">Mô tả</th>
+                                                
+                                                <th colspan="4">Kiểu thanh toán</th>
+                                                <th colspan="4">Mô tả thanh toán</th>
                                                 <th colspan="4">Hình ảnh</th>
                                                 <th colspan="2">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if (listContact != null && listContact.Count > 0)
+                                            @if (listPayment != null && listPayment.Count > 0)
                                             {
-                                                foreach (Contact contact in listContact)
+                                                foreach (Payment payment in listPayment)
                                                 {
                                                     <tr>
-                                                        <td colspan="4" class="align-middle">@contact.ContactName</td>
-                                                        <td colspan="4" class="align-middle"><a class="text-decoration-none" href="@contact.ContactDescription" target="_blank">@contact.ContactDescription</a></td>
+                                                        <td colspan="4" class="align-middle">@payment.PaymentMethod</td>
+                                                        <td colspan="4" class="align-middle">@payment.Description</td>
                                                         <td colspan="4">
                                                             <div class="d-flex align-items-center">
-                                                                <img style="max-width: 350px; max-height: 350px; object-fit: contain;" src="@contact.ImageUrl" />
+                                                                <img style="max-width: 250px; max-height: 250px; object-fit: contain;" src="@payment.Image" />
                                                             </div>
                                                         </td>
                                                         <td colspan="2" class="align-middle">
-                                                            <button class="btn btn-datatable btn-icon btn-transparent-dark me-2" onclick="UpdateContact()"><i data-feather="edit"></i></button>
-                                                            <button class="btn btn-datatable btn-icon btn-transparent-dark" onclick="DeleteContact('@contact.Id')"><i data-feather="trash-2"></i></button>
+                                                            <button class="btn btn-datatable btn-icon btn-transparent-dark" onclick="DeletePayment('@payment.Id')"><i data-feather="trash-2"></i></button>
                                                         </td>
                                                     </tr>
                                                 }
@@ -114,7 +114,6 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </main>
             @Html.Partial("_Footer")
@@ -156,12 +155,74 @@
             return true;
         }
 
-        function UploadImage(type) {
-            if (type == '1') {
-                document.getElementById('addPayImg').click();
-            }
+        function UploadImage() {
+            document.getElementById('addPayImg').click();
 
         }
+
+        function AddPayment() {
+            const paymentMethod = document.getElementById('addPaymentName').value;
+            const paymentDesc = document.getElementById('addPaymentDesc').value;
+            const fileInputImageAdd = $('#addPayImg')[0].files[0];
+
+
+            var formData = new FormData();
+            formData.append('paymentMethod', paymentMethod);
+            formData.append('paymentDesc', paymentDesc);
+
+            if (fileInputImageAdd) {
+                formData.append('paymentImg', fileInputImageAdd);
+            }
+
+            $.ajax({
+                url: "/AdminManage/AddPaymentMethod",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: async function (data) {
+                    if (data.success) {
+                        await showAlert('Thêm phương thức thanh toán thành công', 'success');
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        await showAlert("Không thể cập nhật. vui lòng thử lại.", 'warning');
+                    }
+                },
+                error: async function (xhr, status, error) {
+                    await showAlert("Error", 'error');
+                }
+            });
+        }
+
+        function DeletePayment(id) {
+
+            var formData = new FormData();
+            formData.append('paymentId', id);
+
+            $.ajax({
+                url: "/AdminManage/DeletePaymentMethod",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: async function (data) {
+                    if (data.success) {
+                        await showAlert('Xóa phương thức thanh toán thành công', 'success');
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        await showAlert("Không thể xóa. vui lòng thử lại.", 'warning');
+                    }
+                },
+                error: async function (xhr, status, error) {
+                    await showAlert("Error", 'error');
+                }
+            });
+        }
+
     </script>
 </body>
 </html>

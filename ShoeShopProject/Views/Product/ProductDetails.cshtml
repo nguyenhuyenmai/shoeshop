@@ -6,6 +6,7 @@
     EmrSession emrSession = ViewBag.EmrSession;
     Product product = ViewBag.Product;
     List<ProductDetails> listProductDetails = ViewBag.ListProductDetails;
+    List<Product> listProductSame = ViewBag.ListProductSame;
     // Lọc ra các màu duy nhất
     var uniqueColors = listProductDetails.Select(p => new { p.colorID, p.colorName }).Distinct().ToList();
     // Lọc ra các size duy nhất
@@ -70,7 +71,7 @@
                     <!-- Main page content-->
                     <div class="container-xl px-4">
                         <!-- Detailed pricing example-->
-                        <div class="card pricing-detailed my-10">
+                        <div class="card pricing-detailed my-5">
                             <div class="row align-items-center g-0">
                                 <!-- Detailed pricing column 1-->
                                 <div class="col-lg-6 z-1 mb-4 mb-lg-0 d-flex justify-content-center align-items-center">
@@ -127,7 +128,8 @@
                                             }
                                             <div class="mb-3 mt-3 d-flex justify-content-start align-items-center">
                                                 <span class="fw-bold text-dark me-4">Số lượng</span>
-                                            <input class="form-control text-center me-10" id="quantity" oninput="ChangeQuantityValue(this)" style="width:90px" type="number" max="999999" maxlength="6" min="0" value="1" />
+                                                <input class="form-control text-center me-10" id="quantity" oninput="ChangeQuantityValue(this)" style="width:90px" type="number" max="999999" maxlength="6" min="0" value="1" />
+                                                <span id="quantityStock" class="text-orange me-4"></span>
                                                 <button class="btn btn-outline-primary me-3" onclick="AddToCart('@product.Id')">Thêm vào giỏ hàng</button>
                                             </div>
                                             <hr class="mb-2 mt-2"/>
@@ -139,6 +141,29 @@
                                 </div>
                             </div>
                         </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header">Các sản phẩm bạn có thể thích</div>
+                        <div class="row align-items-center g-0">
+                            @if (listProductSame != null && listProductSame.Any())
+                            {
+                                foreach(Product p in listProductSame)
+                                {
+                                    <div class="col-lg-2 col-md-6 mb-4">
+                                        <a href="@Url.Action("ProductDetails", "Product", new{productID = p.Id})">
+                                            <img class="card-img-top" src="@p.Thumbnail" alt="@p.Name" title="@p.Name">
+                                        </a>
+                                        <div class="card-body text-center">
+                                            <div class="card-title">
+                                                <a href="@Url.Action("ProductDetails", "Product", new{productID = p.Id})" class="text-decoration-none fw-bold" style="color: #446084; font-size: .9em;">@p.Name</a>
+                                            </div>
+                                            <strong class="text-orange" style="font-size: .9em;">@Constants.ConvertCurrency(p.Price)</strong>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
                     </div>
                 </main>
             @Html.Partial("_Footer")
@@ -190,6 +215,7 @@
         var m_sizeID = null;
         var m_sizeID = null;
         var productVariantId = null;
+        var maxStock = 0;
 
         function SelectSize(sizeID) {
             $('.size-button').removeClass('active');
@@ -227,6 +253,9 @@
                 <text>
                     if (size == '@pd.sizeId' && color == '@pd.colorID') {
                         productVariantId = '@pd.pId';
+                        document.getElementById('quantity').value = 1;
+                        $('#quantityStock').text('@pd.quantity sản phẩm');
+                        maxStock = @pd.quantity;
                     }
                 </text>
             }
@@ -237,11 +266,14 @@
             return /^-?\d+$/.test(value);
         }
 
-        function ChangeQuantityValue(inputElement) {
+        function ChangeQuantityValue(inputElement) {debugger
             var quantity = inputElement.value;
             // Kiểm tra giá trị nhập liệu
             if (!isNumeric(quantity) || parseInt(quantity) < 0) {
                 inputElement.value = 1;
+                return;
+            } else if (maxStock > 0 && quantity >= maxStock) {
+                inputElement.value = maxStock;
                 return;
             }
         }

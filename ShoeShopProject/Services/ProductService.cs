@@ -136,6 +136,31 @@ namespace ShoeShopProject.Services
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<Product> ListProductsSameType (int id)
+        {
+            List<Product> list = new List<Product>();
+            Product product = _context.Products.FirstOrDefault(x => x.Id == id);
+            if( product != null)
+            {
+                var rs = _context.Products
+                        .Where(x => x.BrandId == product.BrandId || x.CategoryId == product.CategoryId)
+                        .Take(6)
+                        .ToList();
+
+                if (rs != null && rs.Any())
+                {
+                    list.AddRange(rs);
+                }
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="brand"></param>
         /// <param name="search"></param>
         /// <param name="size"></param>
