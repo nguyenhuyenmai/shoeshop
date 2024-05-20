@@ -3,23 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\shoeshop\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|C:\\Users\\Admin\\Documents\\shoeshop\\shoeshopproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\shoeshop\\shoeshopproject\\data\\servicemapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\data\\servicemapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\shoeshop\\shoeshopproject\\data\\adminsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|C:\\Users\\Admin\\Documents\\shoeshop\\shoeshopproject\\data\\adminsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\data\\adminsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\shoeshop\\shoeshopproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\shoeshop\\shoeshopproject\\views\\home\\homepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|C:\\Users\\Admin\\Documents\\shoeshop\\shoeshopproject\\views\\home\\homepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\views\\home\\homepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|c:\\users\\admin\\documents\\shoeshop\\shoeshopproject\\views\\account\\loginadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|C:\\Users\\Admin\\Documents\\shoeshop\\shoeshopproject\\views\\account\\loginadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1C3FD233-258F-4E0C-8930-9315A9EDFC0D}|ShoeShopProject\\ShoeShopProject.csproj|solutionrelative:shoeshopproject\\views\\account\\loginadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -58,24 +58,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ServiceMapping.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\shoeshop\\ShoeShopProject\\Data\\ServiceMapping.cs",
               "RelativeDocumentMoniker": "ShoeShopProject\\Data\\ServiceMapping.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\shoeshop\\ShoeShopProject\\Data\\ServiceMapping.cs",
               "RelativeToolTip": "ShoeShopProject\\Data\\ServiceMapping.cs",
-              "ViewState": "AQIAADMAAAAAAAAAAAAowEAAAABLAAAA",
+              "ViewState": "AQIAADMAAAAAAAAAAAAowEEAAABGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-15T17:01:24.851Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AdminSession.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\shoeshop\\ShoeShopProject\\Data\\AdminSession.cs",
               "RelativeDocumentMoniker": "ShoeShopProject\\Data\\AdminSession.cs",
@@ -83,18 +83,17 @@
               "RelativeToolTip": "ShoeShopProject\\Data\\AdminSession.cs",
               "ViewState": "AQIAACYAAAAAAAAAAAAAwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T17:01:20.743Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T17:01:20.743Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\shoeshop\\ShoeShopProject\\appsettings.json",
               "RelativeDocumentMoniker": "ShoeShopProject\\appsettings.json",
               "ToolTip": "C:\\Users\\Admin\\Documents\\shoeshop\\ShoeShopProject\\appsettings.json",
               "RelativeToolTip": "ShoeShopProject\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-05-15T16:55:03.302Z",
               "EditorCaption": ""
@@ -109,8 +108,7 @@
               "RelativeToolTip": "ShoeShopProject\\Views\\Home\\HomePage.cshtml",
               "ViewState": "AQIAADkAAAAAAAAAAAAAAFkAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-15T16:52:41.421Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T16:52:41.421Z"
             },
             {
               "$type": "Document",
@@ -122,8 +120,7 @@
               "RelativeToolTip": "ShoeShopProject\\Views\\Account\\LoginAdmin.cshtml",
               "ViewState": "AQIAADMAAAAAAAAAAAAAAEEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-15T16:42:04.169Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T16:42:04.169Z"
             },
             {
               "$type": "Document",
@@ -147,8 +144,7 @@
               "RelativeToolTip": "ShoeShopProject\\Services\\OrderService.cs",
               "ViewState": "AQIAAB8AAAAAAAAAAAAAADEAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T16:15:24.582Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T16:15:24.582Z"
             },
             {
               "$type": "Document",
@@ -172,8 +168,7 @@
               "RelativeToolTip": "ShoeShopProject\\Controllers\\ShopingController.cs",
               "ViewState": "AQIAAHQAAAAAAAAAAADgv4UAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T16:07:00.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T16:07:00.501Z"
             },
             {
               "$type": "Document",
